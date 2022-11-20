@@ -1,0 +1,1 @@
+/home/philipp/programmieren/skripte/wikipedia-search-de.sh
