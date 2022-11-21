@@ -1,0 +1,37 @@
+\BOOKMARK [0][-]{chapter.1}{1 Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{2 Theoretical Background}{}% 2
+\BOOKMARK [1][-]{section.2.1}{2.1 Hippocampus}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{2.2 Predictive map theory}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{2.3 Successor Representation}{chapter.2}% 5
+\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Mathematical Foundation}{section.2.3}% 6
+\BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Example for the Successor Representation}{section.2.3}% 7
+\BOOKMARK [1][-]{section.2.4}{2.4 Multidimensional Scaling}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.5}{2.5 Metric for quantifying the results}{chapter.2}% 9
+\BOOKMARK [0][-]{chapter.3}{3 Framework}{}% 10
+\BOOKMARK [1][-]{section.3.1}{3.1 First Model and Architecture}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{3.2 Word to word models}{chapter.3}% 12
+\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 Data preparation}{section.3.2}% 13
+\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 \0401 -hot-encoded vector approach}{section.3.2}% 14
+\BOOKMARK [2][-]{subsection.3.2.3}{3.2.3 Word vector approach}{section.3.2}% 15
+\BOOKMARK [1][-]{section.3.3}{3.3 Average approach}{chapter.3}% 16
+\BOOKMARK [0][-]{chapter.4}{4 Methodology and Results}{}% 17
+\BOOKMARK [1][-]{section.4.1}{4.1 First Model and Architecture}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.2}{4.2 Word to word models}{chapter.4}% 19
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 Word to word models: Evaluating the results}{section.4.2}% 20
+\BOOKMARK [1][-]{section.4.3}{4.3 Averaging models}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Averaging models: Evaluating the results}{section.4.3}% 22
+\BOOKMARK [0][-]{chapter.5}{5 Conclusion}{}% 23
+\BOOKMARK [0][-]{appendix.A}{A Additional configurations}{}% 24
+\BOOKMARK [1][-]{section.A.1}{A.1 Multiple hidden layers}{appendix.A}% 25
+\BOOKMARK [1][-]{section.A.2}{A.2 Many epochs and multiple hidden layers}{appendix.A}% 26
+\BOOKMARK [1][-]{section.A.3}{A.3 Using word vectors to learn an \0401 -hot-encoded vector}{appendix.A}% 27
+\BOOKMARK [1][-]{section.A.4}{A.4 Multiplying the training data}{appendix.A}% 28
+\BOOKMARK [1][-]{section.A.5}{A.5 Calculating high time steps}{appendix.A}% 29
+\BOOKMARK [1][-]{section.A.6}{A.6 Predict only the most frequent words}{appendix.A}% 30
+\BOOKMARK [0][-]{appendix.B}{B Cluster plots of word to word models}{}% 31
+\BOOKMARK [0][-]{appendix.C}{C Barplots of the average approach}{}% 32
+\BOOKMARK [0][-]{appendix.D}{D Training parameters}{}% 33
+\BOOKMARK [0][-]{section*.45}{List of Abbreviations}{}% 34
+\BOOKMARK [0][-]{appendix*.46}{List of Figures}{}% 35
+\BOOKMARK [0][-]{appendix*.47}{List of Tables}{}% 36
+\BOOKMARK [0][-]{appendix*.48}{Bibliography}{}% 37

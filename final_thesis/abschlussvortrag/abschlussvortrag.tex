@@ -1,0 +1,194 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% PRL presentation template
+% based on https://github.com/FAU-AMMN/fau-beamer by Tim Roith
+% Adaptation done by:
+% Linda Schneider
+% Dalia Rodriguez-Salas
+% Noah Maul
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\documentclass[handout, notes, t]{beamer}
+%\documentclass[notes=only, t]{beamer}
+\documentclass[handout, t]{beamer}
+%\documentclass[t]{beamer}
+
+%\setbeameroption{show only notes}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% VON MIR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{nameref}
+\newcommand{\Emph}[1]{\textbf{#1}}
+\newcommand{\mynote}[1]{\note{\huge{#1}}}
+\newcommand{\spacy}{\texttt{spacy}}
+\newcommand{\onehot}[1]{$ 1 $-hot-encoded vector{#1}}
+
+\newcommand{\os}[1]{\onslide<+->{#1}}
+\newcommand{\Os}[2]{\onslide<#1->{#2}}
+
+\newcommand*{\figref}[1]{\figurename~#1}
+
+%\setbeamercovered{transparent=0}
+
+%\usepackage{xspace}
+%\newcommand{\ie}{i.\,e.,\xspace}
+%\newcommand{\eg}{e.\,g.,\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% STYLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% the possible options for the 'i2beamer' package are:
+% - 'english' (if the slides are in english) 
+% - 'wide'    (if the slides should use a 16:9 aspect ratio)
+% - 'logo'    (if the logo of the Programming Systems Group should be included)
+% - 'plain'   (if the background image of the title page should be omitted)
+% - Faculty shorts: nat, phil, med, tf, rw, wiso, jura (no faculty short results in FAU)
+
+\RequirePackage[wide,logo,tf,english]{sty/beamer}
+
+% VON MIR
+% Nachfolgende Stichpunkte schimmern nicht in grau durch
+% Muss NACH \RequirePackage{.../beamer} stehen
+\setbeamercovered{transparent=0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\defbibheading{bibliography}{}
+\addbibresource[label=primary]{references.bib}
+\nocite{*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INFO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\parbox{\textwidth}{The hippocampus and language: Word to word prediction in terms of the successor representation}}
+%\subtitle{Optional subtitle of document}
+
+\author{Philipp Rost}
+\institute[Department Informatik]{Friedrich-Alexander-Universität Erlangen-Nürnberg\\ Department Informatik}
+%\institute{Friedrich-Alexander-Universität Erlangen-Nürnberg}
+
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% === TITEL FOLIE ===================================
+
+\begin{frame}[plain,c]
+  \titlepage
+\end{frame}
+
+% === AGENDA ===================================
+
+\begin{frame}
+    \frametitle{Agenda}
+    \tableofcontents
+% --- NOTIZEN -----------------------------------
+\mynote{
+    \begin{itemize}
+        \item[ü] The agenda consists of five sections: Introduction, the theoretical background, presenting the framework I have developed, my results and a conclusion 
+    \end{itemize}
+}
+\end{frame}
+
+% === INTRODUCTION ===================================
+
+\section{Introduction}
+\begin{frame}{Introduction}
+    \begin{itemize}
+    	\item<+-> Understanding the human brain is a challenge as old as science itself
+    	\item<+-> Currently available technology as a metaphor (from abacus to computer)
+    	\item<+-> Projects exist researching the brain as a whole but also for distinct parts, e.g. the hippocampus
+    	\item<+-> Goal: Expanding the application of the Successor Representation (SR) to language
+    	\begin{itemize}
+    		\item<5-> supposedly used by the hippocampus to predict following states/positions
+    	\end{itemize}
+    	\item<6-> To reach it, a neural network is trained with samples extracted from two books
+    \end{itemize}
+% --------------------------------------
+\mynote{
+\begin{itemize}
+    \item[ü] I will start with a short overview
+	\item Understanding the human brain is a challenge as old as science itself
+	\item Currently available technology serves as a metaphor (from abacus to computer)
+    \item There exists projects researching the brain as a whole but also for distinct parts, e.g. the hippocampus
+	\item The goal of my thesis is the expansion of the Successor Representation. STICHPUNKT EINBLENDEN Via the SR we can kinda predict future states/positions in an environment, for example our location in a city. The technique was applied beforehand successfully to a spatial environment and shall now be extended to an abstract scenario like language. To put in bluntly, is it possible to achieve proper (long term) word to word predictions by this technique?
+	\item To reach it, a neural network is trained with samples extracted from two books
+\end{itemize}
+}
+\end{frame}
+
+% === CHAPTER ===================================
+
+\input{chapter/theoretical_background}
+
+\input{chapter/framework}
+
+\input{chapter/results}
+
+% === CONCLUSION ===================================
+
+\section{Conclusion}
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item<+-> By far most of the time was consumed by finding proper values, sadly with bad luck
+        \item<+-> Plenty of configurations didn't improve the results or were worse. Two of them were
+        \begin{itemize}
+            \item<+-> Multiple hidden layers
+            \item<+-> Predicting only most frequent words
+        \end{itemize}
+        \item<+-> Due to the lack of valid data from real experiments interpretation regarding our daily life is difficult
+        \item<+-> Performance of word vectors disappointing, which is a drawback because they might be closer to actual signals
+        \item<+-> Some learning does happen (Average approach)
+    \end{itemize}
+    \begin{figure}
+        \centering
+            \includegraphics<7->[height=0.4\textheight]{Bilder/average_models/ground_truths/D_200pages_1500T_tags.png}
+            \includegraphics<7->[height=0.4\textheight]{Bilder/average_models/Avg_OHE_OHE_5000E_100BS_1L_1C_200P_1500T_D/Transition_Probability_Matrix;_t=1,_DF=0.5.png}
+    \end{figure}
+
+% --- NOTIZEN -----------------------------------
+\mynote{
+    \begin{itemize}
+        \item[ü] Coming to the Conclusion
+        \item By far most of the time was consumed by finding well functioning values.
+        \item Plenty of configurations didn't improve the results or were worse. Although it took much space during the months the dead ends aren't illustrated in the presentation but in the thesis. Two of them were
+        \begin{itemize}
+            \item Multiple hidden layers
+            \item Predicting only most frequent words
+        \end{itemize}
+        \item Due to the lack of valid data from real experiments interpretation regarding our daily life is difficult
+        \item Unfortunately, performance of word vectors is in general disappointing, which is a drawback because they might be closer to actual signals
+        \item Nevertheless, some learning does happen and paths can be reconstructed (Average approach) ENDE DES VORTRAGS
+    \end{itemize}
+}
+\end{frame}
+
+% === REFERENCES ===================================
+
+\section*{References}
+\begin{frame}[allowframebreaks,noframenumbering]{References}
+	\printbibliography
+\end{frame}
+%}
+
+\finalframe{Thank you\\for your attention!}
+
+\end{document}

@@ -1,0 +1,15 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'Hilfsdateien/thesis_main_kb.blg'
+[80] biber:340> INFO - === So Jul 10, 2022, 00:31:45
+[94] Biber.pm:415> INFO - Reading 'Hilfsdateien/thesis_main_kb.bcf'
+[146] Biber.pm:952> INFO - Found 23 citekeys in bib section 0
+[157] Biber.pm:4340> INFO - Processing section 0
+[166] Biber.pm:4531> INFO - Looking for bibtex format file 'literature.bib' for section 0
+[167] bibtex.pm:1689> INFO - LaTeX decoding ...
+[184] bibtex.pm:1494> INFO - Found BibTeX data source 'literature.bib'
+[341] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[341] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[342] Biber.pm:4168> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[342] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[364] bbl.pm:654> INFO - Writing 'Hilfsdateien/thesis_main_kb.bbl' with encoding 'UTF-8'
+[377] bbl.pm:757> INFO - Output to Hilfsdateien/thesis_main_kb.bbl

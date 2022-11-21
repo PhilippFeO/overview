@@ -1,0 +1,15 @@
+\section{Multidimensional Scaling}
+The goal of \gls{mds} is to calculate a $ m $-dimensional mapping, $ m < n $, of a given point cloud in $ \mathbb{R}^n $ that preserves the original distances as good as possible~\cite{HaTiFr17ESL}. The result of the calculation is unique modulo rotation and scaling. Therefore, it is based on a metric and not exact coordinates. \gls{mds} is used to analyze similarities between the rows of the \srmat{} by determining clusters in the graph.\\
+%
+The algorithm is simple and only uses basic linear algebra. \gls{mds} works with a distance matrix $ D $, where each entry is equal to $ d_{ij}^2 $, the squared distance between two points $ x_i, \ x_j \in \mathbb{R}^n $, whose coordinates are (in principle) unknown. By double centering $ D $ it is possible to calculate the matrix product $ X^\top X $, where $ X $ bears the coordinates in the desired dimension~\cite{Riess20PA}. Double centering means multiplying by a matrix $ C := I_n - \frac{1}{n}J_n$, where $ J_n $ is a $ n \times n $-matrix of ones:
+\begin{equation}
+	\underbrace{-\frac{1}{2} CDC}_{B :=} = X^\top X
+	\text{,}
+\end{equation}
+The centering matrix $ C $ has, after a multiplication with a column vector, the same effect of subtracting the mean of all components from the vector itself. \\
+In the next step, the $ m $ largest eigenvalues of $ B $ are calculated along with their corresponding eigenvectors. Finally, the $ m $-dimensional coordinates are determined:
+\begin{equation}
+	X_m = E_m V_m^{1/2}
+	\text,
+\end{equation}
+where $ E_m $ contains the $ m $ eigenvectors and $ V_m $ is a $ m $-dimensional diagonal matrix with the associated eigenvalues.

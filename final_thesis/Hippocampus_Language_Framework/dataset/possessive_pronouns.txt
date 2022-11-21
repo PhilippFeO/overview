@@ -1,0 +1,10 @@
+#https://www.englisch-hilfen.de/grammar/pronomen.htm
+# muss von Nomen gefolgt werden
+my
+your
+his
+her
+its
+our
+your
+their

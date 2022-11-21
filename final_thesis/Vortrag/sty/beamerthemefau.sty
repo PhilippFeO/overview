@@ -1,0 +1,114 @@
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OPTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{xkeyval}
+
+% wide
+\newif\ifOptWide
+\DeclareOptionX{wide}{\OptWidetrue}
+
+% lettering
+\DeclareOptionX{lettering}{\def\OptLettering{#1}}
+
+% large logo (title page)
+\DeclareOptionX{logolarge}{\def\OptLogoLarge{#1}}
+
+% small logo (footline)
+\DeclareOptionX{logosmall}{\def\OptLogoSmall{#1}}
+
+%Big FAU logo (title page)
+\DeclareOptionX{faulogolarge}{\def\OptFAULogoLarge{#1}}
+
+%Big Faculty Titlepage (title page)
+\DeclareOptionX{titlepic}{\def\OptTitlepic{#1}}
+
+% title background
+%\newif\ifOptPlain
+%\IfFileExists{\OptTitlepic}{\OptPlainfalse}{\OptPlaintrue}
+%\DeclareOptionX{plain}{\OptPlaintrue}
+
+\ProcessOptionsX\relax
+
+%\OptTitleBackgroundtrue
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% GEOMETRY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{geometry}
+
+\ifOptWide
+  \newlength\marginleft\setlength\marginleft{14.4mm}
+  \newlength\marginright\setlength\marginright{10.4mm}
+
+  \geometry{paperwidth=338.6mm,paperheight=190.5mm,left=0mm,right=0mm,top=0mm,bottom=0mm}
+  \setbeamersize{text margin left=\marginleft, text margin right=\marginright}
+\else
+  \newlength\marginleft\setlength\marginleft{10.8mm}
+  \newlength\marginright\setlength\marginright{10.8mm}
+
+  \geometry{paperwidth=254mm,paperheight=190.5mm,left=0mm,right=0mm,top=0mm,bottom=0mm}
+  \setbeamersize{text margin left=\marginleft, text margin right=\marginright}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% STYLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{tikz}
+\usetikzlibrary{calc, positioning, shadings}
+
+\ifOptWide
+  \RequirePackage[scaled=1.125]{helvet}
+
+  \pgfdeclareimage[height=17.2mm]{fau_large}{\OptFAULogoLarge}
+  \pgfdeclareimage[height=18.5mm]{fau_small}{_art/fau_blue.png}
+
+  \ifx\OptLettering\empty
+    \pgfdeclareimage[height=26.5mm]{fau_text}{_art/fau_text.png}
+  \else
+    \pgfdeclareimage[height=26.5mm]{fau_text}{\OptLettering}
+  \fi
+
+  \ifx\OptLogoLarge\empty\else
+    \pgfdeclareimage[height=20.5mm]{logo_large}{\OptLogoLarge}
+  \fi
+
+  \ifx\OptLogoSmall\empty\else
+    \pgfdeclareimage[height=6.2mm]{logo_small}{\OptLogoSmall}
+  \fi
+\else
+  \RequirePackage{helvet}
+
+  \pgfdeclareimage[height=14.9mm]{fau_large}{\OptFAULogoLarge}
+  \pgfdeclareimage[height=12.6mm]{fau_small}{_art/fau_blue.png}
+
+  \ifx\OptLettering\empty
+    \pgfdeclareimage[height=26.1mm]{fau_text}{_art/fau_text.png}
+  \else
+    \pgfdeclareimage[height=26.1mm]{fau_text}{\OptLettering}
+  \fi
+
+  \ifx\OptLogoLarge\empty\else
+    \pgfdeclareimage[height=15.1mm]{logo_large}{\OptLogoLarge}
+  \fi
+
+  \ifx\OptLogoSmall\empty\else
+    \pgfdeclareimage[height=6.2mm]{logo_small}{\OptLogoSmall}
+  \fi
+\fi
+
+\usecolortheme{fau}
+\usefonttheme{fau}
+\useoutertheme{fau}
+\useinnertheme{fau}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{transparent=10}
+
+
+
+\mode<all>

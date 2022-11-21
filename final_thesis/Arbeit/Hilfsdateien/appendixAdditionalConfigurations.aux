@@ -1,0 +1,177 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {A}Additional configurations}{33}{appendix.A}\protected@file@percent }
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch: additional configurations}{{A}{33}{Additional configurations}{appendix.A}{}}
+\newlabel{ch: additional configurations@cref}{{[appendix][1][2147483647]A}{[1][33][]33}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {A.1}Multiple hidden layers}{34}{section.A.1}\protected@file@percent }
+\newlabel{subsubsec: multiple hidden layers}{{A.1}{34}{Multiple hidden layers}{section.A.1}{}}
+\newlabel{subsubsec: multiple hidden layers@cref}{{[subappendix][1][2147483647,1]A.1}{[1][34][]34}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Although mentioned that transition probability matrices don't show anything if too many words are used, they can be used sometimes to detect failure. The reference, at least for the \gls {mds}, is illustrated in Figure\nobreakspace  {}\ref  {fig: w2w model gt en}. The value of the metric is $ 0.50 $, the equivalent with one layer achieves $ 0.10 $. This could imply that more layers hamper learning.\relax }}{34}{figure.caption.29}\protected@file@percent }
+\newlabel{fig: text model en ohe 40L}{{A.1}{34}{Although mentioned that transition probability matrices don't show anything if too many words are used, they can be used sometimes to detect failure. The reference, at least for the \gls {mds}, is illustrated in \figref {\ref {fig: w2w model gt en}}. The value of the metric is $ 0.50 $, the equivalent with one layer achieves $ 0.10 $. This could imply that more layers hamper learning.\relax }{figure.caption.29}{}}
+\newlabel{fig: text model en ohe 40L@cref}{{[figure][1][2147483647,1]A.1}{[1][34][]34}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces As mentioned before, more layers result in worse \glspl {sr}. Already one additional hidden layer lowers the metric. The model in (a) reaches $ 0.22 $, whereas with one hidden layer the value is $ 0.10 $. The network in (b) was configured with $ 10 $ hidden layers and the successor representation looks indistinguishable from one training with $ 40 $ (Figure\nobreakspace  {}\ref  {fig: text model en ohe 40L}).\relax }}{35}{figure.caption.30}\protected@file@percent }
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {A.2}Many epochs and multiple hidden layers}{36}{section.A.2}\protected@file@percent }
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces The only conclusion to draw from this plot of two different models is that additional epochs might lead to a full degeneration of the results if word vectors are used for training. The $ 1 $-hot-encoded vector analogue shows no mismatch to them of Section\nobreakspace  {}\ref  {subsubsec: multiple hidden layers}\nobreakspace  {}\nameref  {subsubsec: multiple hidden layers}.\relax }}{36}{figure.caption.31}\protected@file@percent }
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {A.3}Using word vectors to learn an $ 1 $-hot-encoded vector}{37}{section.A.3}\protected@file@percent }
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {A.4}{\ignorespaces \gls {mds} plot of a model using german training data and word vectors as input to learn a $ 1 $-hot-encoded vector. The results lack characteristics to draw sensible conclusions from. Though it is possible to calculate the metric for the configuration: $ 0.47 $. By comparing with Table\nobreakspace  {}\ref  {tab: text model versions and metrics}, it sits between its full $ 1 $-hot-encoded vector and word vector relatives.\relax }}{37}{figure.caption.32}\protected@file@percent }
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {A.4}Multiplying the training data}{38}{section.A.4}\protected@file@percent }
+\newlabel{subsubsec: multiplying training data}{{A.4}{38}{Multiplying the training data}{section.A.4}{}}
+\newlabel{subsubsec: multiplying training data@cref}{{[subappendix][4][2147483647,1]A.4}{[1][38][]38}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {A.5}{\ignorespaces Concatenating the training data $ 5 $ times with itself doesn't change outcomes (compare Figure\nobreakspace  {}\ref  {fig: text model cumulativ mds plots}). This impression is fortified by the metrics both models achieve: $ 0.14 $ for $ 1 $-hot-encoded vectors and $ 0.72 $ with word vectors ($ 0.08 $ and $ 0.74 $ without respectively, Table\nobreakspace  {}\ref  {tab: text model versions and metrics}).\relax }}{38}{figure.caption.33}\protected@file@percent }
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {A.5}Calculating high time steps}{39}{section.A.5}\protected@file@percent }
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {A.6}{\ignorespaces High times also don't bring progress since no evident structure is recognizable within the plots. A comparison with the ground truth wouldn't bring additional insights too because the underlying matrices can't be interpreted as transition probability matrices.\relax }}{39}{figure.caption.34}\protected@file@percent }
+\newlabel{fig: high time steps ohe}{{A.6}{39}{High times also don't bring progress since no evident structure is recognizable within the plots. A comparison with the ground truth wouldn't bring additional insights too because the underlying matrices can't be interpreted as transition probability matrices.\relax }{figure.caption.34}{}}
+\newlabel{fig: high time steps ohe@cref}{{[figure][6][2147483647,1]A.6}{[1][39][]39}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {A.7}{\ignorespaces As before in Figure\nobreakspace  {}\ref  {fig: high time steps ohe} no structure is recognizable to do further research on. Results relying on word vectors again seem to be very labile and degenerate.\relax }}{40}{figure.caption.35}\protected@file@percent }
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {A.6}Predict only the most frequent words}{41}{section.A.6}\protected@file@percent }
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {A.8}{\ignorespaces The same model with german data set and word vectors as in Section\nobreakspace  {}\ref  {sec: text based models and architecture}\nobreakspace  {}\nameref  {sec: text based models and architecture} was trained. Predictions were limited to the $ 40 $ most frequent words. For a better overview the second plot was labeled with the corresponding \gls {pos}-tags.\relax }}{41}{figure.caption.36}\protected@file@percent }
+\@setckpt{appendixAdditionalConfigurations}{
+\setcounter{page}{42}
+\setcounter{equation}{0}
+\setcounter{enumi}{0}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{1}
+\setcounter{section}{6}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{8}
+\setcounter{table}{0}
+\setcounter{parentequation}{0}
+\setcounter{@todonotes@numberoftodonotes}{0}
+\setcounter{section@level}{1}
+\setcounter{pp@next@reset}{0}
+\setcounter{float@type}{4}
+\setcounter{tabx@nest}{0}
+\setcounter{listtotal}{0}
+\setcounter{listcount}{0}
+\setcounter{liststart}{0}
+\setcounter{liststop}{0}
+\setcounter{citecount}{0}
+\setcounter{citetotal}{0}
+\setcounter{multicitecount}{0}
+\setcounter{multicitetotal}{0}
+\setcounter{instcount}{41}
+\setcounter{maxnames}{999}
+\setcounter{minnames}{1}
+\setcounter{maxitems}{3}
+\setcounter{minitems}{1}
+\setcounter{citecounter}{0}
+\setcounter{maxcitecounter}{0}
+\setcounter{savedcitecounter}{0}
+\setcounter{uniquelist}{0}
+\setcounter{uniquename}{0}
+\setcounter{refsection}{0}
+\setcounter{refsegment}{0}
+\setcounter{maxextratitle}{0}
+\setcounter{maxextratitleyear}{0}
+\setcounter{maxextraname}{2}
+\setcounter{maxextradate}{0}
+\setcounter{maxextraalpha}{2}
+\setcounter{abbrvpenalty}{50}
+\setcounter{highnamepenalty}{50}
+\setcounter{lownamepenalty}{25}
+\setcounter{maxparens}{3}
+\setcounter{parenlevel}{0}
+\setcounter{mincomprange}{10}
+\setcounter{maxcomprange}{100000}
+\setcounter{mincompwidth}{1}
+\setcounter{afterword}{0}
+\setcounter{savedafterword}{0}
+\setcounter{annotator}{0}
+\setcounter{savedannotator}{0}
+\setcounter{author}{0}
+\setcounter{savedauthor}{0}
+\setcounter{bookauthor}{0}
+\setcounter{savedbookauthor}{0}
+\setcounter{commentator}{0}
+\setcounter{savedcommentator}{0}
+\setcounter{editor}{0}
+\setcounter{savededitor}{0}
+\setcounter{editora}{0}
+\setcounter{savededitora}{0}
+\setcounter{editorb}{0}
+\setcounter{savededitorb}{0}
+\setcounter{editorc}{0}
+\setcounter{savededitorc}{0}
+\setcounter{foreword}{0}
+\setcounter{savedforeword}{0}
+\setcounter{holder}{0}
+\setcounter{savedholder}{0}
+\setcounter{introduction}{0}
+\setcounter{savedintroduction}{0}
+\setcounter{namea}{0}
+\setcounter{savednamea}{0}
+\setcounter{nameb}{0}
+\setcounter{savednameb}{0}
+\setcounter{namec}{0}
+\setcounter{savednamec}{0}
+\setcounter{translator}{0}
+\setcounter{savedtranslator}{0}
+\setcounter{shortauthor}{0}
+\setcounter{savedshortauthor}{0}
+\setcounter{shorteditor}{0}
+\setcounter{savedshorteditor}{0}
+\setcounter{labelname}{0}
+\setcounter{savedlabelname}{0}
+\setcounter{institution}{0}
+\setcounter{savedinstitution}{0}
+\setcounter{lista}{0}
+\setcounter{savedlista}{0}
+\setcounter{listb}{0}
+\setcounter{savedlistb}{0}
+\setcounter{listc}{0}
+\setcounter{savedlistc}{0}
+\setcounter{listd}{0}
+\setcounter{savedlistd}{0}
+\setcounter{liste}{0}
+\setcounter{savedliste}{0}
+\setcounter{listf}{0}
+\setcounter{savedlistf}{0}
+\setcounter{location}{0}
+\setcounter{savedlocation}{0}
+\setcounter{organization}{0}
+\setcounter{savedorganization}{0}
+\setcounter{origlocation}{0}
+\setcounter{savedoriglocation}{0}
+\setcounter{origpublisher}{0}
+\setcounter{savedorigpublisher}{0}
+\setcounter{publisher}{0}
+\setcounter{savedpublisher}{0}
+\setcounter{language}{0}
+\setcounter{savedlanguage}{0}
+\setcounter{origlanguage}{0}
+\setcounter{savedoriglanguage}{0}
+\setcounter{pageref}{0}
+\setcounter{savedpageref}{0}
+\setcounter{textcitecount}{0}
+\setcounter{textcitetotal}{0}
+\setcounter{textcitemaxnames}{0}
+\setcounter{biburlbigbreakpenalty}{100}
+\setcounter{biburlbreakpenalty}{200}
+\setcounter{biburlnumpenalty}{0}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{0}
+\setcounter{smartand}{1}
+\setcounter{bbx:relatedcount}{0}
+\setcounter{bbx:relatedtotal}{0}
+\setcounter{vrcnt}{0}
+\setcounter{Item}{0}
+\setcounter{Hfootnote}{6}
+\setcounter{bookmark@seq@number}{30}
+\setcounter{caption@flags}{0}
+\setcounter{continuedfloat}{0}
+\setcounter{subfigure}{2}
+\setcounter{subtable}{0}
+\setcounter{su@anzahl}{0}
+\setcounter{LT@tables}{0}
+\setcounter{LT@chunks}{0}
+}

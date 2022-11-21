@@ -1,0 +1,1 @@
+javac -d bin mw/mapreduce/core/* mw/mapreduce/reader/* mw/mapreduce/util/*  mw/mapreduce/MWMapReduce.java

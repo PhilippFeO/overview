@@ -1,0 +1,68 @@
+\section{Word to word models} \label{sec: text based models and architecture}
+The harder challenge lies in processing natural languages. For this purpose two different approaches, namely the \nameref{subsubsec: onehot approach} and the \nameref{subsubsec: word vector approach} were examined. The ambitious goal was to learn or get a sense of the grammatical structure of the text. In practice, this means that after feeding \eg an adjective into the Neural Network, it should propose words or word classes which follow this word.
+%Since the book is written in german, \texttt{Nouns} and \texttt{Adjectives} are obvious candidates for a successor but since it's free word order it is not possible to rely on these word classes since german has a variable word order\TODO{Vllt. ausführlicher schildern und/oder Referenz im Todo-Kommentar der tex-Datei hinzufügen}.
+%% TODO https://en.wikipedia.org/wiki/V2_word_order#Examples_of_verb_second_(V2)
+In the following paragraphs an schematic outline of the model will be given \ie few data was involved to achieve more reasonable diagrams. The full book covers multiple thousands of states, leading to a sparse squared matrix in this dimension. Thus, depicting matrices no longer makes sense.
+
+To be able to evaluate the results, a ground truth distribution was calculated for gaining a qualitative and quantitative measure (\figref{\ref{fig: text model gt}}). The data set is labeled on the axes. There is also a \gls{mds} plot next to it because on large scale models ($ > 500 $ words) it is impossible to get visual feedback just by inspecting the matrix plot. The hope is that clusters of the same color appear as in \secreff{sec: first model and architecture MR}, because meta word pairs, for example \texttt{Noun → Verb} \eg \texttt{Alice → goes} and \texttt{wood → breaks}, should share some features and be mapped close to each other. Furthermore, similarities are to some extent also visible by looking at the \gls{mds}.
+
+Having a reference now, the model was set up for training. In \figref{\ref{fig: text model sr}} is an emblematic transition matrix illustrated. Whereas in \secreff{sec: first model and architecture MR}, it was easy to recognize the rules in the \gls{sr}, this will no longer be possible due to the sheer amount of states. Hence, the cluster plot is more important to gain visual intuition for the results.
+%
+\begin{figure}
+	\centering
+		\subcaptionbox{Examplary ground truth distribution of a tiny data set.}{
+		\includegraphics[height=\twocolpicheight]{Bilder/chapter4/BspW2W/plots/OHE_OHE_500E_100BS_1L_1C_5P_30T_J/J_5pages_30T_words.png}
+	}
+		\hfill
+		\subcaptionbox{Corresponding \gls{mds} plot of the ground truth in (a).}{
+			\includegraphics[height=\twocolpicheight]{Bilder/chapter4/BspW2W/plots/OHE_OHE_500E_100BS_1L_1C_5P_30T_J/MDS_J_5pages_30T_words.png}
+		}
+	\caption{For illustrative purposes only a tiny data set \ie few words of the book were processed to calculate the ground truth distribution.}
+	\label{fig: text model gt}
+\end{figure}
+%
+\begin{figure}
+	\centering
+		\subcaptionbox{Learned \srmat{} of model using \onehot{s} during training.}{
+			\includegraphics[height=\twocolpicheight]{chapter4/BspW2W/plots/OHE_OHE_500E_100BS_1L_1C_5P_30T_J/Transition_Probability_Matrix;_t=1,_DF=0.5.png}
+		}
+		\hfill
+		\subcaptionbox{\gls{mds} clustering of the Successor Representation in (a).}{
+			\includegraphics[height=\twocolpicheight]{chapter4/BspW2W/plots/OHE_OHE_500E_100BS_1L_1C_5P_30T_J/MDS_of_Transition_Probability_Matrix;_t=1,_DF=0.5.png}
+		}
+	\caption{Transition probability matrix of a model using constructed rules by processing a book and \onehot{s} during training. Hence, the environment is no longer manufactured. Whereas the results of the models in \secreff{sec: first model and architecture MR} were fully described by the matrix plot, this will no longer be possible for large scale models because the matrix becomes to huge. As seen before, the \gls{mds} can occupy this role. If sufficient learning happened, clusters or similarities to the corresponding plot of the ground truth should be recognizable. (Though not when illustrating with the tiny data set.)}
+	\label{fig: text model sr}
+\end{figure}
+
+% --------------------------------------
+
+\subsection{Word to word models: Evaluating the results} \label{subsec: text model evaluating the results}
+To achieve the best result, four configurations were tested and compared in \tabref{\ref{tab: text model versions and metrics}} by the metric introduced in \secreff{sec: metric}.
+\begin{table}
+	\centering
+	\caption{Trained models with metric values regarding their corresponding ground truth. ``german'' and ``english'' refer to the book which provided the data set (s. \secreff{sec: data preparation}). The associated \gls{mds} plots for a qualitative feedback can be found in \figref{\ref{fig: text model gt de en mds}} and \figref{\ref{fig: text model cumulativ mds plots}} of \appref{ch: appendix text model}.}
+	\begin{tabular}{ll}
+		\toprule
+		Version					& Metric \\
+		\midrule
+		german, \onehot{} 		& $ 0.08 $	\\% 0.08200
+		german, word vector		& $ 0.74 $	\\% 0.74139
+		english, \onehot{}		& $ 0.10 $	\\% 0.10021
+		english, word vector	& $ 0.78 $	\\% 0.77522
+		\bottomrule
+	\end{tabular}
+	\label{tab: text model versions and metrics}
+\end{table}
+Surprisingly, the german and english \onehot{} versions nearly don't differ. Not only regarding the model used to collect the data but in general. Due to the beforehand mentioned freer word order german incorporates, a better score for the english based models was expected.
+
+It is obvious that the models using word vectors perform quite bad compared to the \onehot{} variants. The reason may be on one hand that language is a structural complex field and on the other that too many uncertainties are attached to word vectors. Learning is more difficult since $ 300 $ distinct values are involved, whereas a \onehot{} may be quite accurate if the learned version has its maximum near or at the index where the input vector is equal to $ 1 $. Also back-calculating the output to a word is a process of compromises because it is guaranteed that \spacy{} doesn't provide a word vector with the exact same components and it is necessary to limit on the $ n $ closest word vectors/words. The disappointing outcome of the word vector model is furthermore frustrating since it is more probable that the hippocampus doesn't process signals which are close to \onehot{s} (or an analogy of it) but rather multiple stimuli decoding different characteristics, thus more related to a word vector.
+
+\paragraph{Additional configurations}
+While searching for the best parameters, not just the four versions mentioned were examined. Most of the time was consumed by finding a promising setup. This is reflected by some parameters the framework provides (\eg \texttt{nmb\_hidden\_layers}, \secreff{ap: parameters}), which aren't necessary to reproduce the results presented in this work. A subset with illustrations and short documentation of all variants can be found in \appref{ch: additional configurations}.
+
+% --------------------------------------
+
+%\input{chapter/results/additional_configurations.tex}
+
+
+%The ambitions goal of detecting grammatical rules by using encoded words as \onehot{} or word vector wasn't achieved by solely evaluating the plain word models.

@@ -1,0 +1,4 @@
+Ger. OHE: mean 0.073, std_def: 0.020
+Eng. OHE: mean 0.081, std_def: 0.033
+Ger. WV: mean 0.140, std_def: 0.021
+Eng. WV: mean 0.102, std_def: 0.036

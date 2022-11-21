@@ -1,0 +1,4 @@
+# replace with real hostnames and ports
+replica0=cip2a0:12345
+replica1=cip2a1:12346
+replica2=cip2a2:12347

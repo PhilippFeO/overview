@@ -1,0 +1,15 @@
+MPI/mpi_example
+
+Test/*
+
+FullyConnected
+
+cnn/.idea*
+
+Michael
+
+Test
+
+*.vscode
+/.vs
+/x64/Debug

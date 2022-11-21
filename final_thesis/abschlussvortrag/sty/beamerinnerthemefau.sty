@@ -1,0 +1,1071 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Diagram packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{smartdiagram}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SPECIAL SLIDES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\FAUTITLEPAGE{%
+  \setlength{\unitlength}{1mm}
+  %
+  \begin{tikzpicture}[%
+      x=\unitlength,%
+      y=\unitlength,%
+      outer sep=0,%
+      inner sep=0,%
+      remember picture, overlay,%
+      shift={(current page.south west)},%
+    ]
+    %
+    \fill[color=lightcolor] (0,0) rectangle (\the\paperwidth,\the\paperheight+10mm);
+    %
+    \ifOptPlain\else
+      % use (more or less) the same (somewhat strange) crop of the title background image as in the
+      % original PPT file
+      \ifOptWide
+        \node[anchor=south west] at (0,0)
+          {\includegraphics[width=\the\paperwidth, trim={0mm 22.6mm 0mm 22.6mm}, clip]{\OptTitlepic}};
+      \else
+        \node[anchor=south west] at (0,0)
+          {\includegraphics[width=\the\paperwidth, trim={0mm 0mm 68.0mm 33.2mm}, clip]{\OptTitlepic}};
+      \fi
+      %
+      % faded color gradient over title background...
+      \tikzfading[name=background fade, top color=transparent!0, bottom color=transparent!90]
+      %
+      \fill[lightcolor, path fading=background fade]
+        (0,0) rectangle (\the\paperwidth+2mm,\the\paperheight-33.2mm);
+    \fi
+    %
+    % horizontal bar
+    \coordinate (b1) at (\the\marginleft-0.4mm,\the\paperheight-33.2mm);
+    \draw[line width=2mm, draw=maincolor] (b1) to (b1 -| current page.north east);
+    %
+    \ifx\OptLogoLarge\empty
+      % FAU logo
+      \node[anchor=north east] (fau logo) at (\the\paperwidth-\the\marginright,\the\paperheight-8mm)
+        {\pgfuseimage{fau_large}};
+      %
+      % text
+      \node[anchor=north west] (fau logo) at (\the\marginleft,\the\paperheight-4mm)
+        {\pgfuseimage{fau_text}};
+    \else
+      % FAU logo
+      \node[anchor=north west] (fau logo) at (\the\marginleft,\the\paperheight-8mm)
+        {\pgfuseimage{fau_large}};
+      %
+      % text
+      \path let \p1 = (fau logo.north east) in
+        node[anchor=north west] (fau text) at (\x1+4mm,\the\paperheight-4mm)
+          {\pgfuseimage{fau_text}};
+      %
+      % logo
+      \node[anchor=north east] at (\the\paperwidth-\the\marginright,\the\paperheight-6mm)
+        {\pgfuseimage{logo_large}};
+    \fi
+  \end{tikzpicture}
+}
+
+\setbeamertemplate{title page}{%
+  \FAUTITLEPAGE
+  %
+  \setlength{\unitlength}{1mm}
+  %
+  \begin{tikzpicture}[%
+      x=\unitlength,%
+      y=\unitlength,%
+      outer sep=0,%
+      inner sep=0,%
+      remember picture, overlay,%
+      shift={(current page.south west)},%
+    ]
+    %
+    % title
+    \node[anchor=south west, align=left] (title) at (\the\marginleft,\the\paperheight-104.0mm)
+      {%
+        \usebeamercolor[fg]{title}
+        \usebeamerfont{title}{\raggedright\inserttitle\par}\vphantom{Äg}
+        %
+        \ifx\insertsubtitle\empty\else
+          \\[0.2ex]
+          \usebeamercolor[fg]{subtitle}
+          \usebeamerfont{subtitle}{\raggedright\insertsubtitle\par}\vphantom{Äg}
+        \fi
+      };
+    %
+    % this is a little hack to make everything work even if something contains a line break...
+    \usebeamercolor{info}
+    \definecolor{INFOCOLOR}{named}{fg}
+    %
+    % info
+    \node[%
+      anchor=north west, align=left,%
+      font=\usebeamerfont{info}, color=INFOCOLOR] at ($(title.south west)+(0,-6.6ex)$)
+      {%
+        \ifx\insertauthor\empty\else%
+          \insertauthor%
+          \\[1.0ex]%
+        \fi%
+        %
+        \ifx\insertinstitute\empty\else%
+          \insertinstitute%
+          \\[1.0ex]%
+        \fi
+        %
+        \ifx\insertdate\empty\else%
+          \insertdate%
+          \\[1.0ex]%
+        \fi%
+      };
+  \end{tikzpicture}
+}
+
+\providecommand{\finalframe}[1]{%
+  \begin{frame}[plain]
+    \FAUTITLEPAGE
+    %
+    \setlength{\unitlength}{1mm}
+    %
+    \begin{tikzpicture}[%
+        x=\unitlength,%
+        y=\unitlength,%
+        outer sep=0,%
+        inner sep=0,%
+        remember picture, overlay,%
+        shift={(current page.south west)},%
+      ]
+      %
+      % this is a little hack to make everything work even if the message contains a line break...
+      \usebeamercolor{title}
+      \definecolor{TITLECOLOR}{named}{fg}
+      %
+      % message
+      \node[%
+        anchor=south west, align=left,%
+        font=\usebeamerfont{title}, text=TITLECOLOR]at (\the\marginleft,\the\paperheight-108.0mm)
+        {%
+          #1
+        };
+    \end{tikzpicture}
+  \end{frame}
+}
+
+\AtBeginSection{%
+  \begin{frame}[plain]
+    \setlength{\unitlength}{1mm}
+    %
+    \begin{tikzpicture}[%
+        x=\unitlength,%
+        y=\unitlength,%
+        outer sep=0,%
+        inner sep=0,%
+        remember picture, overlay,%
+        shift={(current page.south west)},%
+      ]
+      %
+      \fill[color=lightcolor] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+      %
+      % horizontal bar top
+      \coordinate (b1) at (\the\marginleft-0.4mm,\the\paperheight-33.2mm);
+      \draw[line width=2mm, draw=maincolor] (b1) to (b1 -| current page.north east);
+      %
+      % horizontal bar bottom
+      \coordinate (b1) at (\the\marginleft-0.4mm,8.9mm);
+      \draw[line width=0.5mm, draw=lightcolor] (b1) to (b1 -| current page.north east);
+      %
+      \ifx\OptLogoLarge\empty
+        % FAU logo
+        \node[anchor=north east] (fau logo) at (\the\paperwidth-\the\marginright,\the\paperheight-8mm)
+          {\pgfuseimage{fau_large}};
+        %
+        % text
+        \node[anchor=north west] (fau logo) at (\the\marginleft,\the\paperheight-4mm)
+          {\pgfuseimage{fau_text}};
+      \else
+        % FAU logo
+        \node[anchor=north west] (fau logo) at (\the\marginleft,\the\paperheight-8mm)
+          {\pgfuseimage{fau_large}};
+        %
+        % text
+        \path let \p1 = (fau logo.north east) in
+          node[anchor=north west] (fau text) at (\x1+4mm,\the\paperheight-4mm)
+            {\pgfuseimage{fau_text}};
+        %
+        % logo
+        \node[anchor=north east] at (\the\paperwidth-\the\marginright,\the\paperheight-6mm)
+          {\pgfuseimage{logo_large}};
+      \fi
+      %
+      % title
+      \node[anchor=south west, align=left] (title) at (\the\marginleft,\the\paperheight-104.0mm)
+        {%
+          \usebeamercolor[fg]{title}
+          \usebeamerfont{title}{\raggedright\insertsection\par}
+        };
+      %
+      % footer
+      \node[anchor=east, align=left] at (\the\paperwidth-\the\marginright,4.45mm)
+        {%
+          \usebeamercolor[fg]{footline} % sic!
+          \usebeamerfont{footer}{%
+            %
+            \ifx\insertdate\empty\else%
+              ~\insertshortdate\quad\quad\quad%
+            \fi%
+            %
+            \insertframenumber~/~\inserttotalframenumber
+          }
+        };
+    \end{tikzpicture}
+  \end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LISTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{enumitem}
+
+\setlist[enumerate]{%
+  label=\arabic*.,%
+  font=\usebeamerfont*{enumerate item}\usebeamercolor[fg]{enumerate item},%
+}
+
+\setbeamertemplate{itemize item}{\Large\raise2.0pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subitem}{\Large\raise1.3pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subsubitem}{\Large\raise1.1pt\hbox{\textbullet}}
+
+\setitemize{%
+  label=\usebeamerfont*{itemize item}\usebeamercolor[fg]{itemize item}\usebeamertemplate{itemize item}
+}
+
+\setitemize[1]{itemsep=0.500ex, labelsep=1.4ex, leftmargin=2.6ex}
+\setitemize[2]{itemsep=0.500ex, labelsep=1.4ex, leftmargin=2.6ex}
+\setitemize[3]{itemsep=0.500ex, labelsep=1.4ex, leftmargin=2.6ex}
+\setitemize[4]{itemsep=0.500ex, labelsep=1.4ex, leftmargin=2.6ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TABLE OF CONTENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% spacing between sections in TOC
+
+%\makeatletter
+%\colorlet{section number in toc}{maincolor}
+%\patchcmd{\beamer@sectionintoc}
+%{\vfill}
+%{\vskip 1.15em}
+%{}
+%{}
+%\makeatother
+%
+%\setbeamertemplate{section in toc}{%
+%  \usebeamerfont*{section in toc}%
+%  %
+%  {
+%    \color{section number in toc}
+%    \textbf{\ifnum\inserttocsectionnumber<10 0\fi\inserttocsectionnumber}%
+%  }
+%  %
+%  {
+%    \setbeamercolor{section in toc}{fg=maincolor}  
+%    \inserttocsection
+%  }
+%}
+
+% We want numbered sections in Toc. Additionally we specify of shaded toc.
+% ------------------------------------------------------------------------------
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+\setbeamertemplate{section in toc shaded}{%
+	\begin{colormixin}{0!color0}%
+		\usebeamertemplate{section in toc}%
+	\end{colormixin}%
+	\unskip%
+}
+
+\setbeamertemplate{subsection in toc shaded}{%
+	\begin{colormixin}{0!color0}%
+		\usebeamertemplate{subsection in toc}%
+	\end{colormixin}%
+	\unskip%
+}
+% ..............................................................................
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography item %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[backend=biber,sorting=none,doi=true,style=ieee]{biblatex}
+\setbeamertemplate{bibliography item}[text]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography item end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BLOCK ENVIRONMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage[skins]{tcolorbox}
+
+\renewenvironment{block}[1]
+  {
+    \ifstrempty{#1}%
+    {%
+      \pgfkeys{tcb/block title/.code={}}
+    }%
+    {%
+      \pgfkeys{tcb/block title/.code={\pgfkeysalso{adjusted title={#1\vphantom{Aq}}}}}
+    }%
+    \begin{tcolorbox}[%
+        % general
+        enhanced, block title,%
+        % font
+        fonttitle=\usebeamerfont{block title}, fontupper=\usebeamerfont{normal text},%
+        % style
+        title filled, colframe=block, colbacktitle=block,%
+        coltitle=white, colback=block!5, coltext=black, boxrule=0.75pt, arc=0pt,%
+        % layout
+        boxsep=2.2pt, left=4pt, right=4pt, top=4pt, bottom=4pt, oversize=-12pt,%
+        before skip=8pt, after skip=8pt,%
+        % shadow
+        fuzzy shadow={0.5pt}{-2pt}{1pt}{1pt}{black!80},%
+      ]
+  }
+  {
+    \end{tcolorbox}
+  }
+
+\renewenvironment{exampleblock}[1]
+  {
+    \ifstrempty{#1}%
+    {%
+      \pgfkeys{tcb/block title/.code={}}
+    }%
+    {%
+      \pgfkeys{tcb/block title/.code={\pgfkeysalso{adjusted title={#1\vphantom{Aq}}}}}
+    }%
+    \begin{tcolorbox}[%
+        % general
+        enhanced, block title,%
+        % font
+        fonttitle=\usebeamerfont{block title}, fontupper=\usebeamerfont{normal text},%
+        % style
+        title filled, colframe=exampleblock, colbacktitle=exampleblock,%
+        coltitle=white, colback=exampleblock!5, coltext=black, boxrule=0.75pt, arc=0pt,%
+        % layout
+        boxsep=2.2pt, left=4pt, right=4pt, top=4pt, bottom=4pt, oversize=-12pt,%
+        before skip=8pt, after skip=8pt,%
+        % shadow
+        fuzzy shadow={0.5pt}{-2pt}{1pt}{1pt}{black!80},%
+      ]
+  }
+  {
+    \end{tcolorbox}
+  }
+
+\renewenvironment{alertblock}[1]
+  {
+    \ifstrempty{#1}%
+    {%
+      \pgfkeys{tcb/block title/.code={}}
+    }%
+    {%
+      \pgfkeys{tcb/block title/.code={\pgfkeysalso{adjusted title={#1\vphantom{Aq}}}}}
+    }%
+    \begin{tcolorbox}[%
+        % general
+        enhanced, block title,%
+        % font
+        fonttitle=\usebeamerfont{block title}, fontupper=\usebeamerfont{normal text},%
+        % style
+        title filled, colframe=alertblock, colbacktitle=alertblock,%
+        coltitle=white, colback=alertblock!5, coltext=black, boxrule=0.75pt, arc=0pt,%
+        % layout
+        boxsep=2.2pt, left=4pt, right=4pt, top=4pt, bottom=4pt, oversize=-12pt,%
+        before skip=8pt, after skip=8pt,%
+        % shadow
+        fuzzy shadow={0.5pt}{-2pt}{1pt}{1pt}{black!80},%
+      ]
+  }
+  {
+    \end{tcolorbox}
+  }
+
+\newenvironment{hintblock}[1]
+  {
+    \ifstrempty{#1}%
+    {%
+      \pgfkeys{tcb/block title/.code={}}
+    }%
+    {%
+      \pgfkeys{tcb/block title/.code={\pgfkeysalso{adjusted title={#1\vphantom{Aq}}}}}
+    }%
+    \begin{tcolorbox}[%
+        % general
+        enhanced, block title,%
+        % font
+        fonttitle=\usebeamerfont{block title}, fontupper=\usebeamerfont{normal text},%
+        % style
+        title filled, colframe=hintblock, colbacktitle=hintblock,%
+        coltitle=white, colback=hintblock!5, coltext=black, boxrule=0.75pt, arc=0pt,%
+        % layout
+        boxsep=2.2pt, left=4pt, right=4pt, top=4pt, bottom=4pt, oversize=-12pt,%
+        before skip=8pt, after skip=8pt,%
+        % shadow
+        fuzzy shadow={0.5pt}{-2pt}{1pt}{1pt}{black!80},%
+      ]
+  }
+  {
+    \end{tcolorbox}
+  }
+
+\newenvironment{codeblock}[1]
+  {
+    \ifstrempty{#1}%
+    {%
+      \pgfkeys{tcb/block title/.code={}}
+    }%
+    {%
+      \pgfkeys{tcb/block title/.code={\pgfkeysalso{adjusted title={#1\vphantom{Aq}}}}}
+    }%
+    \begin{tcolorbox}[%
+        % general
+        enhanced, block title,%
+        % font
+        fonttitle=\usebeamerfont{block title}, fontupper=\usebeamerfont{normal text},%
+        % style
+        title filled, colframe=codeblock, colbacktitle=codeblock,%
+        coltitle=white, colback=black!90, coltext=white, boxrule=0.75pt, arc=0pt,%
+        % layout
+        boxsep=2.2pt, left=4pt, right=4pt, top=4pt, bottom=4pt, oversize=-12pt,%
+        before skip=8pt, after skip=8pt,%
+        % shadow
+        fuzzy shadow={0.5pt}{-2pt}{1pt}{1pt}{black!80},%
+      ]
+  }
+  {
+    \end{tcolorbox}
+  }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nice Boxes start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shadow boxes for images
+% code adapted from https://tex.stackexchange.com/a/11483/3954
+\usetikzlibrary{shadows,calc, matrix, shadows.blur, fit}
+\usetikzlibrary{shapes}
+\usetikzlibrary{chains,positioning,shapes.symbols,fadings,shadows, backgrounds}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes.callouts}
+\usetikzlibrary{shapes.arrows, shadings, arrows}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{positioning}
+\RequirePackage{ragged2e}
+% some parameters for customization
+\def\shadowshift{3pt,-3pt}
+\def\shadowradius{6pt}
+
+% this draws a shadow under a rectangle node
+\colorlet{innercolor}{black!60}
+\colorlet{outercolor}{gray!05}
+\newcommand\drawshadow[1]{
+	\begin{pgfonlayer}{shadow}
+		\shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.south west)+(\shadowshift)+(\shadowradius/2,\shadowradius/2)$) circle (\shadowradius);
+		\shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.north west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$) circle (\shadowradius);
+		\shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.south east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$) circle (\shadowradius);
+		\shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.north east)+(\shadowshift)+(-\shadowradius/2,-\shadowradius/2)$) circle (\shadowradius);
+		\shade[top color=innercolor,bottom color=outercolor] ($(#1.south west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$) rectangle ($(#1.south east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$);
+		\shade[left color=innercolor,right color=outercolor] ($(#1.south east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$) rectangle ($(#1.north east)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$);
+		\shade[bottom color=innercolor,top color=outercolor] ($(#1.north west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$) rectangle ($(#1.north east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$);
+		\shade[outercolor,right color=innercolor,left color=outercolor] ($(#1.south west)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$) rectangle ($(#1.north west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$);
+		\filldraw ($(#1.south west)+(\shadowshift)+(\shadowradius/2,\shadowradius/2)$) rectangle ($(#1.north east)+(\shadowshift)-(\shadowradius/2,\shadowradius/2)$);
+	\end{pgfonlayer}
+}
+
+% create a shadow layer, so that we don't need to worry about overdrawing other things
+\pgfdeclarelayer{shadow} 
+\pgfsetlayers{shadow,main}
+
+\newsavebox\mybox
+\newlength\mylen
+
+\providecommand\shadowimage[2][]{%
+	\setbox0=\hbox{\includegraphics[#1]{#2}}
+	\setlength\mylen{\wd0}
+	\ifnum\mylen<\ht0
+	\setlength\mylen{\ht0}
+	\fi
+	\divide \mylen by 120
+	\def\shadowshift{\mylen,-\mylen}
+	\def\shadowradius{\the\dimexpr\mylen+\mylen+\mylen\relax}
+	\begin{tikzpicture}
+		\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[#1]{#2}};
+		\drawshadow{image}
+\end{tikzpicture}}
+
+% we also provide a command to put cliparts inside a circle
+% 1- color, 2 - circle size, 3 - image size, 4 - image
+\providecommand\circleimage[4][]{%
+	\begin{figure}
+		\begin{tikzpicture}
+			\node[circle,draw=#2,
+			fill=#2,
+			path picture={
+				\node at (path picture bounding box.center){
+					\includegraphics[#1]{#4}
+				};
+			}, inner sep=0pt, minimum size=#3]{};
+		\end{tikzpicture}
+\end{figure}}
+
+% Some commands to generate cards
+
+% 1- card color, 2 - circle color, 3 - card width, 4 - image, 5 - text
+\providecommand\card[5]{%
+	\newdimen\mywidth
+	\mywidth=#3
+	\tikz{	
+		\node[align=left, draw=#1, fill=#1, minimum height=1/3* #3, minimum width = #3, text width = #3 - 0.25 * #3,  rounded corners = 0.1cm, text=#1] (card) {#5};
+		\node[below right, text width = #3 - 0.25 * #3] at ([xshift=4pt]card.north west) {#5};
+		
+		\node[circle,draw=none, minimum size=1/5 * #3](img) at ([xshift= -1/7* #3, yshift = 1/7 * #3] card.south east) {};
+		
+		\fill[black,opacity=0.4] (img.north east) --  ([yshift=0.13 * #3]card.south east) -- ([yshift=0.1cm]card.south east)  to [out=-90,in=0]   ([xshift=-0.1cm]card.south east)  -- ([xshift=-0.13 * #3]card.south east) -- (img.south west);
+		
+		\node[circle,draw=#2,
+		fill=#2,
+		path picture={
+			\node at (path picture bounding box.center){
+				\includegraphics[width=0.14\mywidth]{#4}
+			};
+		}, inner sep=0pt, minimum size=1/5 * #3] at ([xshift= -1/7* #3 , yshift = 1/7 * #3] card.south east) {};
+	}	
+}
+
+
+% 1 - card color, 2 - card width, 3 - text
+\providecommand\simplecard[3]{%
+	\tikz{	
+		\node[align=center, draw=#1, fill=#1, minimum height=1/3* #2, minimum width = #2, text width = #2 - 0.25 * #2,  rounded corners = 0.1cm] (card) {#3};
+	}	
+}
+
+
+% 1- card color, 2 - card width, 3 - image, 4 - text
+\providecommand\sideimagecard[4]{%
+	\newdimen\mywidth
+	\mywidth=#2
+	\tikz{	
+		\node[align=left, draw=#1, fill=#1, minimum height=1/3* #2, minimum width = #2, text width = #2 - 0.25 * #2,  rounded corners = 0.1cm, text=#1] (card) {#4};
+		\node[below right, text width = #2 - 0.25 * #2] at ([xshift=5pt, yshift=-5pt]card.north west) {#4};
+		
+		%\node[inner sep=0pt, minimum size=1/2 * #2, rounded corners = 0.1cm] at ([xshift= -1/7* #2 ] card.east) {\includegraphics[width=0.2\mywidth]{#3} };
+		\node[rectangle,
+		path picture={
+			\node at (path picture bounding box.center){
+				\includegraphics[width=0.2\mywidth]{#3}
+			};
+		}, inner sep=0pt, minimum size=1/5 * #2, rounded corners = 0.1cm] at ([xshift= -1/7* #2] card.east) {};
+	}	
+}
+
+
+% 1- image, 2 - card width, 3 - text
+\providecommand\imagecard[3]{%
+	\tikz
+	{
+		\node[rectangle,draw, minimum width = #2,  minimum height=1/3* #2, minimum width = #2,  text width = #2, inner sep=0pt, align = center, rounded corners = 0.1cm,
+		path picture={
+			\node at (path picture bounding box.center){
+				\includegraphics[width=#2]{#1}
+			};
+		}]{#3};
+	}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nice Boxes end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nice Tables start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{fancytable}[2]{%
+	\def\tabtitle{#1}
+	\def\mycellwidth{#2}
+	\tikzset{ 
+		bottomrule/.style={%
+			nodes in empty cells,
+			execute at end cell={%
+				\draw [very thin, white!80!black] (\tikzmatrixname-\the\pgfmatrixcurrentrow-\the\pgfmatrixcurrentcolumn.south west) -- (\tikzmatrixname-\the\pgfmatrixcurrentrow-\the\pgfmatrixcurrentcolumn.south east);%
+			}
+		},
+		toprule/.style={%
+			nodes in empty cells,
+			execute at end cell={%
+				\fill[white] (\tikzmatrixname-\the\pgfmatrixcurrentrow-\the\pgfmatrixcurrentcolumn.north west) rectangle ([yshift=1cm]\tikzmatrixname-\the\pgfmatrixcurrentrow-\the\pgfmatrixcurrentcolumn.north east);%;
+				\draw [very thin, white!80!black] ([yshift=1cm]\tikzmatrixname-\the\pgfmatrixcurrentrow-\the\pgfmatrixcurrentcolumn.north west) -- ([yshift=1cm]\tikzmatrixname-\the\pgfmatrixcurrentrow-\the\pgfmatrixcurrentcolumn.north east);%
+			}
+		},
+		table/.style={
+			matrix of nodes,
+			row sep=0pt,
+			column sep=-2pt,
+			nodes={
+				fill=white, align=center, text=black
+			},
+			minimum height=1.5em,
+			text depth=0.5ex,
+			text height=2ex,
+			nodes in empty cells,
+			%%
+			every even row/.style={
+				bottomrule
+			},
+			every odd row/.style={
+				bottomrule
+			},
+			row 1/.style={
+				nodes={
+					text=white!40!black,
+					font = \bfseries
+				},
+				toprule
+			}
+		}
+	}
+	\begin{tikzpicture}
+		\matrix (first) [table,text width=\mycellwidth]}%
+	{;
+		\node[above right, text=black] at ([xshift=0.5cm, yshift=0.2cm]first-1-1.north west) { {\Large \tabtitle}};
+		%\node[]{\mystyle};
+	\end{tikzpicture}
+}
+
+
+%% provide check mark and empty box
+\providecommand\checkbox{
+	{\color{white!40!black}$\square$}
+}
+\providecommand\cmarkColor[1]{
+	{\color{#1}$\blacksquare$}
+}
+\providecommand\cmark{
+	{\color{maincolor}$\blacksquare$}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nice Tables end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nice Lists start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For fancy enumerate tcolorbox
+%\RequirePackage[most]{tcolorbox}
+
+% a default color
+\newcounter{fancycount}
+% lets define some options using pgfkeys 
+% https://tex.stackexchange.com/questions/34312/how-to-create-a-command-with-key-values
+\pgfkeys{
+	/fancylist/.is family, /fancylist,
+	default/.style = 
+	{shape = circle, color = maincolor},
+	shape/.estore in = \myshape,
+	color/.estore in = \mycolor,
+}
+
+\newenvironment{fancylist}[1][color=maincolor, shape=circle]{%
+	\pgfkeys{/fancylist, default, #1}%
+	
+	% lets decide label shape based on option
+	\def\mysquare{square}
+	\def\myring{ring}
+	\def\myhollowsquare{hollowsquare}
+	\ifx\myshape\mysquare
+	\def\mydraw{
+		\node[draw=\mycolor,rectangle,minimum width=7.0mm, minimum height=7.0mm, inner sep=0pt,fill=\mycolor] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+	}
+	\else
+	\ifx\myshape\myhollowsquare
+	\def\mydraw{
+		\node[draw=\mycolor,rectangle,minimum width=6.0mm, minimum height=7.0mm, inner sep=0pt] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+	}
+	\else
+	\ifx\myshape\myring
+	\def\mydraw{
+		\node[draw=\mycolor,circle,minimum width=7.0mm,inner sep=0pt] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+	}
+	\else
+	\def\mydraw{
+		\node[draw=\mycolor,circle,minimum width=7.0mm,inner sep=0pt,fill=\mycolor] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+	}
+	\fi
+	\fi
+	\fi
+	
+	\setcounter{fancycount}{0}
+	% lets keep it simple and ask users to use \item
+	\def\item{\tcbitem}
+	\begin{tcbitemize}[raster columns=1,    
+		nofloat,
+		enhanced,
+		raster left skip=10.0mm,
+		sharp corners=all,
+		opacityfill=0,
+		valign=center,
+		coltext=BodyColor,
+		overlay={\coordinate (X) at ([xshift=-5.50mm]frame.west);
+			\mydraw; \draw[very thick, color=\mycolor] (frame.north west) -- (frame.south west); }]}{\end{tcbitemize}}
+
+
+
+%% provide command to create box with colorful side-headings
+% option - color , 2 - title, 3 - text
+\providecommand\sideheading[3][maincolor]{%
+	\tcbset{
+		mybox/.style={
+			enhanced,
+			grow to left by=-2.5cm,
+			boxsep=0mm,
+			sharp corners=all,
+			opacityfill=0,
+			coltext=maincolor,
+			overlay={
+				\coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+				\node[align=right, text=#1, text width=2.5cm, anchor=north east] at (X) {#2};
+				\draw[line width=0.5mm, color=#1] (frame.north west) -- (frame.south west); 
+			}
+		}
+	}
+	
+	\begin{tcolorbox}[mybox]
+		#3
+	\end{tcolorbox}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Nice Lists end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Descriptive diagram %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tikzset{
+	myshape/.style={
+		shape=signal,
+		fill=maincolor,
+		minimum height=1.5cm,
+		minimum width=1.5cm,
+		text=white,
+		signal pointer angle=130,
+		signal to=east,
+		signal from=west,
+		rotate=-90,
+		transform shape
+	},
+	mytext/.style={
+		draw=maincolor,
+		text width=7cm,
+		minimum height=1.15cm,
+		thick,
+		outer sep=0pt
+	}  
+}
+\newcounter{tmp}
+\providecommand\MyDesc[4][]{
+	\stepcounter{tmp}%
+	\node[myshape,#1] (desc\thetmp) {};
+	\node[font=\color{white}] at (desc\thetmp) {#2};
+	\node[mytext,anchor=north west] at (desc\thetmp.north west) 
+	{%
+		%\parbox[t]{2em}{\hfill$\bullet$\hfill\null}%
+		\parbox[][#4][t]{\dimexpr\linewidth-3em\relax}{#3}%
+	};
+}
+
+\RequirePackage{varwidth}
+\providecommand\Umbruch[2][3cm]{\begin{varwidth}{#1}\centering#2\end{varwidth}}
+
+
+\RequirePackage{listings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LISTINGS STYLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\colorlet{listing string}{green!70!black}
+\definecolor{listing keyword}{HTML}{1F548A}
+\definecolor{listing comment}{HTML}{0098E0}
+
+\lstset{%
+	basicstyle=\ttfamily,%
+	keywordstyle=\color{listing keyword}\bfseries,%
+	stringstyle=\color{listing string},%
+	commentstyle=\color{listing comment},%
+	showstringspaces=false,%
+	literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DEFLISTING / USELISTING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{filecontents}
+
+\newenvironment{deflisting}[1]%
+{%
+	\def\tempfile{_tmp/lst_#1.txt}%
+	\csname filecontents*\endcsname{\tempfile}%
+}%
+{%
+	\csname endfilecontents*\endcsname%
+}%
+
+\newcommand{\uselisting}[1]%
+{%
+	\def\tempfile{_tmp/lst_#1.txt}%
+	\lstinputlisting{\tempfile}%
+}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SPACING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\providecommand{\spc}{\vspace*{0.4cm}}
+\providecommand{\smspc}{\vspace*{0.25cm}}
+\providecommand{\tspc}{\vspace*{0.10cm}}
+\providecommand{\Vfill}{\vskip0pt plus 1filll}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MULTI-COLUMN LAYOUTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{adjustbox}
+
+\providecommand{\TWOCOLUMNS}[5]%
+{%
+	\vspace*{0.07cm}
+	\adjustbox{valign=#3}{%
+		\begin{minipage}[#3]{\dimexpr(#1\linewidth-\columnsep*3/4)\relax}%
+			#4
+		\end{minipage}%
+	}%
+	\hfill%
+	\adjustbox{valign=#3}{%
+		\begin{minipage}[#3]{\dimexpr(#2\linewidth-\columnsep*3/4)\relax}%
+			#5
+		\end{minipage}%
+	}%
+}%
+
+\providecommand{\twocolumns}[2]%
+{%
+	\TWOCOLUMNS{0.5}{0.5}{t}{#1}{#2}
+}%
+
+\providecommand{\twocolumnsC}[2]%
+{%
+	\TWOCOLUMNS{0.5}{0.5}{c}{#1}{#2}
+}%
+
+\providecommand{\twocolumnsP}[4]%
+{%
+	\TWOCOLUMNS{#1}{#2}{t}{#3}{#4}
+}%
+
+\providecommand{\twocolumnsCP}[4]%
+{%
+	\TWOCOLUMNS{#1}{#2}{c}{#3}{#4}
+}%
+
+\providecommand{\threecolumns}[3]%
+{%
+	\vspace*{0.07cm}
+	\adjustbox{valign=t}{%
+		\begin{minipage}[t]{\dimexpr(\linewidth-\columnsep)/3\relax}%
+			#1
+		\end{minipage}%
+	}%
+	\hfill%
+	\adjustbox{valign=t}{%
+		\begin{minipage}[t]{\dimexpr(\linewidth-\columnsep)/3\relax}%
+			#2
+		\end{minipage}%
+	}%
+	\hfill%
+	\adjustbox{valign=t}{%
+		\begin{minipage}[t]{\dimexpr(\linewidth-\columnsep)/3\relax}%
+			#3
+		\end{minipage}%
+	}%
+}%
+
+\providecommand{\twocolumnssep}[2]%
+{%
+	\vspace*{0.03cm}
+	\adjustbox{valign=t}{%
+		\begin{minipage}[t]{\dimexpr(\linewidth)/2-\columnsep\relax}%
+			#1
+		\end{minipage}%
+	}%
+	\hfill {\vrule width 1.0pt} \hfill%
+	\adjustbox{valign=t}{%
+		\begin{minipage}[t]{\dimexpr(\linewidth)/2-\columnsep\relax}%
+			#2
+		\end{minipage}%
+	}%
+}%
+
+\RequirePackage{relsize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LITERATURE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Literature}[1]{%
+	\Vfill{}%
+	\par\noindent\textcolor{black!25}{\rule{\textwidth}{1.0pt}}\\[1.0ex]%
+	%
+	\adjustbox{valign=c}{%
+		\begin{minipage}[c]{\dimexpr(2.2cm)\relax}%
+			\def\w{1.6cm}
+			\def\h{2.0cm}
+			%
+			\def\cw{0.3cm}
+			%
+			\begin{tikzpicture}
+				\tikzset{%
+					file line/.style={%
+						line width=1.2pt, line cap=round, line join=round,%
+						rounded corners=2.4pt, draw=black!60,%
+					},%
+				}
+				%
+				\coordinate (sw) at (0,0);
+				\coordinate (se) at ($(sw)+(\w,0)$);
+				\coordinate (nw) at ($(sw)+(0,\h)$);
+				\coordinate (ne) at (nw-|se);
+				%
+				\coordinate (ne1) at ($(ne)+(-\cw,0)$);
+				\coordinate (ne2) at ($(ne)+(0,-\cw)$);
+				%
+				\filldraw[file line, fill=black!2] (sw) -- (se) -- (ne2) -- (ne1) -- (nw) -- cycle;
+				\draw[file line] ($(ne2)+(-0.4pt,-1.6pt)$) -| ($(ne1)+(-1.6pt,-0.4pt)$);
+				%
+				\tikzstyle{line}=[%
+				line width=2.0pt, line cap=round, line join=round, draw=black!20,%
+				]
+				%
+				\coordinate (h1) at ($(nw)!0.3!(sw)$);
+				\coordinate (h2) at ($(nw)!0.8!(sw)$);
+				%
+				\foreach \i in {0,...,4}{%
+					\coordinate (h3) at ($(h1)!\i*0.25!(h2)$);
+					\draw[line, shorten >=0.2cm, shorten <=0.2cm] (h3) to (h3 -| ne);
+				}
+			\end{tikzpicture}
+		\end{minipage}%
+	}%
+	%
+	\hfill%
+	%
+	\adjustbox{valign=c}{%
+		\begin{minipage}[c]{\dimexpr(\linewidth-2.2cm)\relax}%
+			\relsize{-1.0}{\textcolor{black!65}{%
+					#1
+			}}
+		\end{minipage}%
+	}%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TEXT STYLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\providecommand{\hil}[1]{{\usebeamercolor[fg]{highlighted text}#1}}
+\providecommand{\hiltt}[1]{\hil{\texttt{#1}}}
+
+\providecommand{\bad}[1]{{\color{red}#1}}
+\providecommand{\badtt}[1]{\bad{\texttt{#1}}}
+
+\providecommand{\good}[1]{{\color{exampleblock green}#1}}
+\providecommand{\goodtt}[1]{\good{\texttt{#1}}}
+
+\providecommand{\hint}[1]{{\usebeamercolor[fg]{hint text}#1}}
+\providecommand{\hinttt}[1]{\hint{\texttt{#1}}}
+
+\providecommand{\notsoimportant}[1]{\textit{\textcolor{black!50}{#1}}}
+
+\providecommand{\code}[1]{\texttt{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{i2red}{HTML}{C20244}
+\definecolor{i2blue}{HTML}{759EB9}
+
+
+\RequirePackage{tikz}
+
+\usetikzlibrary{%
+	positioning, calc, fit, backgrounds, shadows,%
+	arrows.meta,%
+	shapes, shapes.geometric, shapes.callouts, shapes.misc,%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ANIMATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikzset{%
+	onslide/.code args={<#1>#2}{%
+		\only<#1>{\pgfkeysalso{#2}}
+	},%
+	alt/.code args={<#1>#2#3}{%
+		\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}
+	},
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MARKER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\tikzmark[1]{\tikz[remember picture, overlay] \node[anchor=south] (#1) {};}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CALLOUTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikzstyle{rect callout}=[%
+rectangle callout,%
+scale=0.8,%
+anchor=south,%
+align=center,%
+line width=1.5pt, draw=black, fill=yellow!15, inner xsep=0.8ex, inner ysep=0.8ex,%
+drop shadow={shadow xshift=0.2ex, shadow yshift=-0.2ex, color=black, opacity=0.5},%
+]
+
+\tikzstyle{thought bubble}=[%
+cloud callout, cloud ignores aspect, cloud puffs=18.3, cloud puff arc=120,%
+line width=1.5pt, draw=black, fill=yellow!15, inner xsep=0.2ex, inner ysep=0.4ex,%
+scale=0.8,%
+anchor=south,%
+align=center,%
+drop shadow={shadow xshift=0.2ex, shadow yshift=-0.2ex, color=black!70},%
+]
+
+\tikzset{callout pos/.code args={(#1)(#2,#3)(#4,#5)}{%
+		\pgfkeysalso{%
+			callout absolute pointer={($(#1)+(#2,#3)$)},%
+			at={($(#1)+(#2,#3)+(#4,#5)$)},%
+		}%
+}}%
+
+
+
+\mode
+<all>

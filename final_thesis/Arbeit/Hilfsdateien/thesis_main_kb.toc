@@ -1,0 +1,87 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Theoretical Background}{3}{chapter.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Hippocampus}{3}{section.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Place cells}{4}{section*.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Grid cells}{4}{section*.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Predictive map theory}{4}{section.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Successor Representation}{5}{section.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.1}Mathematical Foundation}{5}{subsection.2.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\gls {sr} and grid cells}{6}{section*.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.2}Example for the Successor Representation}{7}{subsection.2.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Rows}{7}{section*.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Columns}{7}{section*.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Multidimensional Scaling}{7}{section.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}Metric for quantifying the results}{8}{section.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Framework}{11}{chapter.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}First Model and Architecture}{11}{section.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Word to word models}{12}{section.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Data preparation}{12}{subsection.3.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}$ 1 $-hot-encoded vector approach}{13}{subsection.3.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.3}Word vector approach}{13}{subsection.3.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Average approach}{14}{section.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Methodology and Results}{15}{chapter.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}First Model and Architecture}{15}{section.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Word to word models}{16}{section.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.1}Word to word models: Evaluating the results}{17}{subsection.4.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Additional configurations}{17}{section*.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Averaging models}{18}{section.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.1}Averaging models: Evaluating the results}{18}{subsection.4.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Conclusion}{21}{chapter.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Additional configurations}{23}{appendix.A}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.1}Multiple hidden layers}{24}{section.A.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.2}Many epochs and multiple hidden layers}{25}{section.A.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.3}Using word vectors to learn an $ 1 $-hot-encoded vector}{26}{section.A.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.4}Multiplying the training data}{27}{section.A.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.5}Calculating high time steps}{28}{section.A.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.6}Predict only the most frequent words}{29}{section.A.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Cluster plots of word to word models}{31}{appendix.B}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {C}Barplots of the average approach}{33}{appendix.C}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {D}Training parameters}{35}{appendix.D}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Abbreviations}{37}{section*.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Figures}{39}{appendix*.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Tables}{41}{appendix*.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Bibliography}{43}{appendix*.17}%

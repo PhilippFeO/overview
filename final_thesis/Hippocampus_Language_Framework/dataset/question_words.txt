@@ -1,0 +1,12 @@
+# werden von Verb gefolgt
+# werden von Personalpronomen gefolgt
+what
+who
+how
+which
+when
+whom
+do
+dont
+does
+doesnt

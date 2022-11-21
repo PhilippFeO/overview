@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="aufgabe1"/>
+	<classpathentry kind="src" path="aufgabe2"/>
+	<classpathentry kind="src" path="aufgabe4"/>
+	<classpathentry kind="src" path="aufgabe5"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/aopalliance-repackaged-2.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/grizzly-framework-2.4.4.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/grizzly-http-2.4.4.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/grizzly-http-server-2.4.4.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/hk2-api-2.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/hk2-locator-2.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/hk2-utils-2.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.activation-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.activation-api-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.annotation-api-1.3.5.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.inject-2.6.1.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.json-1.1.6-module.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.json-1.1.6.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.json-api-1.1.6.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.json.bind-api-1.0.2.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.validation-api-2.0.2.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.ws.rs-api-2.1.6.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jakarta.xml.bind-api-2.3.3.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/javassist-3.25.0-GA.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jersey-client-2.32.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jersey-common-2.32.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jersey-container-grizzly2-http-2.32.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jersey-hk2-2.32.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jersey-media-jaxb-2.32.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jersey-media-json-binding-2.32.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/jersey-server-2.32.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/osgi-resource-locator-1.0.3.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe1/jaxrs-ri-2.32/yasson-1.0.6.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/btf-1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/guava-20.0.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/jackson-annotations-2.10.1.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/jackson-core-2.9.10.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/jackson-coreutils-1.6.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/jackson-databind-2.9.10.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/jackson-dataformat-yaml-2.9.10.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/jackson-module-jaxb-annotations-2.10.1.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/jersey-entity-filtering-2.32.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/jersey-media-json-jackson-2.32.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/json-patch-1.9.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/jsr305-2.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/msg-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/openstack4j-core-3.3.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/openstack4j-jersey2-3.3.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe2/openstack4j-3.3/snakeyaml-1.15.jar"/>
+	<classpathentry kind="lib" path="/Users/amirasani/git/middleware-gruppe-03/aufgabe5/jars/zab-mwcc.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

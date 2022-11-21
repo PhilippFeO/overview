@@ -1,0 +1,31 @@
+\section{Metric for quantifying the results} \label{sec: metric}
+Throughout the presentation of the results in \chapreff{ch: results} numerous matrices and \gls{mds} plots are used. Sometimes, they give a clarifying visual response, but not in all cases. When comparing different approaches, images lack the needed objectivity and plausible criteria to rate the outcomes. To tackle this issue, a metric was developed to have the possibility to draw objective conclusions.
+
+Since Neural Networks on languages are trained, a measure on the grade of the closeness to the real counterpart is necessary, which is referred by ``ground truth (distribution)'' in the following. The mathematical objects are in both cases squared matrices of dimension $ n \in \mathbb{N} $ built by transposed probability vectors. Nevertheless, the presented mapping is made for $ n \times m $-matrices. Depending on the model type, the ground truth vectors are \onehot{s} or share different fractions across all entries (\secreff{sec: w2w models}).
+
+Hence, the starting positions for the metric are probability vectors. The obvious way to quantify the results is by taking the euclidean norm $ d $ of the difference of the ground truth and the prediction. Consequentially, $ d $ takes values between $ 0 $ and $ \sqrt{2 \cdot n} $ because the maximal difference for each row is $ \sqrt{2} $ and there are $ n $ in total. $ \sqrt{2} $ is derived by the following nonlinear program
+\begin{align}
+	\mathrm{max} 	& \quad \Vert \vec{x} - \vec{y}\Vert_2 = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2} \nonumber\\
+	\mathrm{s.t.} 	& \quad \sum_{i=1}^{n} x_i = 1, \ \sum_{i=1}^{n} y_i = 1\\
+					& \quad x_i, y_i \in [0,1] \nonumber
+	\text{,}
+\end{align}
+which is solved by \onehot{s} for $ \vec{x} $ and $ \vec{y} $ where $ x_i = 1 \neq y_i$ for a $ i \in \{1, \ ..., \ n\} $. Or to put it bluntly, the difference takes its highest values for all scenarios in which the vectors $ \vec{x} $ and $ \vec{y} $ are perpendicular and have a maximal euclidean norm, which means being a \onehot{}. This relation is present $ n $-times for the ground truth matrix and the learned one, implying that the maximal difference is $ \sqrt{2 \cdot n} $.
+
+Finally, it is possible to define the metric on the set $ \mathcal{P} $ of $ n \times m $-probability matrices:
+\begin{equation}
+	d_A \colon \mathcal{P} \to [0,1], \qquad L \mapsto \frac{1}{\sqrt{2 \cdot n}}\Vert A - L \Vert_2
+	\text{,}
+\end{equation}
+where $ A $ describes a fixed matrix in $ \mathcal{P} $. In the scope of this work the ground truth will play the role of $ A $. By $ d_A $, the learned matrix $ L $ is mapped to $ 0 $ if it matches the ground truth distribution perfectly and to $ 1 $ if the rows satisfy the conditions mentioned above.
+
+% ======================================
+
+%\subsection{Root-Mean-Square-Error}
+%%\section{\gls{rmse}}
+%The metric presented in the section beforehand is a generalization of the \gls{rmse}, which is also used for evaluation, especially in \secreff{sec: average approach}. It is defined as
+%\begin{equation}
+%	\mathrm{RSME} \colon \mathbb{R}^n \to \mathbb{R}_{\ge 0}, \qquad \vec{x} \mapsto  \sqrt{\sum_{i=0}^{n} \frac{x_i^2}{2}}
+%	\text{.}
+%\end{equation}
+%The results of the models in \secreff{sec: average approach} are clearer to observe, so it is possible to analyze them more precisely \ie row-wise. Because the the objects of interest are also transition probability matrices, the connection between the lowest and highest values are preserved, if the difference between ground truth and learned row vector is plugged in. Hence, the range of the \gls{rmse} will be $ [0, 1] $. The equivalence between $ d $ and $ \mathrm{\gls{rmse}} $ follows for $ n = 1 $.

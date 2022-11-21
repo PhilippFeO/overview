@@ -1,0 +1,9 @@
+.vscode/*
+
+*.class
+
+Test.java
+
+./aufCipKopierenUndAusführen.sh
+
+.idea

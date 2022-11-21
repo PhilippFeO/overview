@@ -1,0 +1,1 @@
+javac -cp 'jars/*' -d bin mw/zookeeper/*
