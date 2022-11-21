@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html data-darkreader-mode="dynamic" data-darkreader-scheme="dark" class=" vcblpf rcwroiv ywgefrgge idc0_336" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, #bit-notification-bar-iframe, ::-webkit-calendar-picker-indicator {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: #131516;
+   --darkreader-neutral-text: #d8d4cf;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #e8e6e3;
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">html {
+    background-color: #181a1b !important;
+}
+html {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: #181a1b;
+}
+html, body {
+    border-color: #736b5e;
+    color: #e8e6e3;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #545b5e;
+}
+::placeholder {
+    color: #b2aba1;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #555b00 !important;
+    color: #e8e6e3 !important;
+}
+::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #575e62;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #484e51;
+}
+::-webkit-scrollbar-corner {
+    background-color: #181a1b;
+}
+* {
+    scrollbar-color: #454a4d #202324;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}</style>
+        <title>Building Autoencoders in Keras</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="Building%20Autoencoders%20in%20Keras-Dateien/main.css" type="text/css" media=""><style class="darkreader darkreader--cors" media="screen">html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	background: transparent;
+	border: 0;
+	font-size: 100%;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+body {line-height: 1;}
+
+ol, ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+
+:focus {
+	outline: 0;
+}
+
+
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.highlight .hll { background-color: #49483e }
+.highlight  { background: #272822; color: #f8f8f2 }
+.highlight .c { color: #75715e } 
+.highlight .err { color: #960050; background-color: #1e0010 } 
+.highlight .k { color: #66d9ef } 
+.highlight .l { color: #ae81ff } 
+.highlight .n { color: #f8f8f2 } 
+.highlight .o { color: #f92672 } 
+.highlight .p { color: #f8f8f2 } 
+.highlight .cm { color: #75715e } 
+.highlight .cp { color: #75715e } 
+.highlight .c1 { color: #75715e } 
+.highlight .cs { color: #75715e } 
+.highlight .gd { color: #f92672 } 
+.highlight .ge { font-style: italic } 
+.highlight .gi { color: #a6e22e } 
+.highlight .gs { font-weight: bold } 
+.highlight .gu { color: #75715e } 
+.highlight .kc { color: #66d9ef } 
+.highlight .kd { color: #66d9ef } 
+.highlight .kn { color: #f92672 } 
+.highlight .kp { color: #66d9ef } 
+.highlight .kr { color: #66d9ef } 
+.highlight .kt { color: #66d9ef } 
+.highlight .ld { color: #e6db74 } 
+.highlight .m { color: #ae81ff } 
+.highlight .s { color: #e6db74 } 
+.highlight .na { color: #a6e22e } 
+.highlight .nb { color: #f8f8f2 } 
+.highlight .nc { color: #a6e22e } 
+.highlight .no { color: #66d9ef } 
+.highlight .nd { color: #a6e22e } 
+.highlight .ni { color: #f8f8f2 } 
+.highlight .ne { color: #a6e22e } 
+.highlight .nf { color: #a6e22e } 
+.highlight .nl { color: #f8f8f2 } 
+.highlight .nn { color: #f8f8f2 } 
+.highlight .nx { color: #a6e22e } 
+.highlight .py { color: #f8f8f2 } 
+.highlight .nt { color: #f92672 } 
+.highlight .nv { color: #f8f8f2 } 
+.highlight .ow { color: #f92672 } 
+.highlight .w { color: #f8f8f2 } 
+.highlight .mb { color: #ae81ff } 
+.highlight .mf { color: #ae81ff } 
+.highlight .mh { color: #ae81ff } 
+.highlight .mi { color: #ae81ff } 
+.highlight .mo { color: #ae81ff } 
+.highlight .sb { color: #e6db74 } 
+.highlight .sc { color: #e6db74 } 
+.highlight .sd { color: #e6db74 } 
+.highlight .s2 { color: #e6db74 } 
+.highlight .se { color: #ae81ff } 
+.highlight .sh { color: #e6db74 } 
+.highlight .si { color: #e6db74 } 
+.highlight .sx { color: #e6db74 } 
+.highlight .sr { color: #e6db74 } 
+.highlight .s1 { color: #e6db74 } 
+.highlight .ss { color: #e6db74 } 
+.highlight .bp { color: #f8f8f2 } 
+.highlight .vc { color: #f8f8f2 } 
+.highlight .vg { color: #f8f8f2 } 
+.highlight .vi { color: #f8f8f2 } 
+.highlight .il { color: #ae81ff }
+
+
+
+
+body {
+    background: #edf0f2;
+    color: #000305;
+    font-size: 87.5%; 
+    font-family: "Source Sans Pro", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
+    line-height: 1.429;
+    margin: auto;
+    padding: 0;
+    text-align: left;
+    max-width: 1200px;
+    min-width: 700px;
+}
+
+
+
+
+h1 {font-size: 2em }
+h2 {font-size: 1.571em}	
+h3 {font-size: 1.429em}	
+h4 {font-size: 1.286em}	
+h5 {font-size: 1.143em}	
+h6 {font-size: 1em}		
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	line-height: 1.1;
+	margin-bottom: .8em;
+    font-family: "Source Sans Pro", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
+}
+
+h3, h4, h5, h6 { margin-top: .8em; }
+	
+hr { border: 2px solid #EEEEEE; }
+
+
+a {outline: 0;}
+a img {border: 0px; text-decoration: none;}
+a:link, a:visited {
+	color: #d00000;
+	padding: 0 1px;
+	text-decoration: underline;
+}
+a:hover, a:active, a.active, .active>a {
+	text-decoration: underline;
+}
+
+h1 a:hover {
+    background-color: inherit
+}
+	
+
+p {margin-bottom: 1.143em;}
+
+strong, b {font-weight: bold;}
+em, i {font-style: italic;}
+
+::-moz-selection {background: #F6CF74; color: #fcfcfc;}
+::selection {background: #F6CF74; color: #fcfcfc;}
+
+
+ul {
+	list-style: outside disc;
+	margin: 1em 0 1.5em 1.5em;
+}
+
+ol {
+	list-style: outside decimal;
+	margin: 1em 0 1.5em 1.5em;
+}
+
+.post-info {
+    float:right;
+    margin:10px;
+    padding:5px;
+}
+
+.post-info p{
+    margin-bottom: 1px;
+}
+
+.readmore { float: right }
+
+dl {margin: 0 0 1.5em 0;}
+dt {font-weight: bold;}
+dd {margin-left: 1.5em;}
+
+pre{background-color: #000; padding: 10px; color: #fcfcfc; margin: 10px; overflow: auto;}
+
+
+blockquote {
+    margin: 20px;
+    font-style: italic;
+}
+cite {}
+
+q {}
+
+
+table {margin: .5em auto 1.5em auto; width: 98%;}
+	
+	
+	thead th {padding: .5em .4em; text-align: left; border: thin solid grey;}
+	thead td {border: thin solid grey;}
+
+	
+	tbody td {padding: .5em .4em; border: thin solid grey;}
+	tbody th {border: thin solid grey;}
+	
+	tbody .alt td {}
+	tbody .alt th {}
+	
+	
+	tfoot th {}
+	tfoot td {}
+	
+
+header, section, footer,
+aside, nav, article, figure {
+	display: block;
+}
+
+
+img.right figure.right {float: right; margin: 0 0 2em 2em;}
+img.left, figure.left {float: right; margin: 0 0 2em 2em;}
+
+img {
+	max-width: 90%;
+	margin:auto;
+}
+
+
+#banner {
+    clear: both;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 1%;
+	padding: 2.5em 0 0 0;
+	width: 90%;
+	background: #d00000;
+	border-radius: 5px;
+}
+
+	
+	#banner h1 {
+        font-size: 3em; 
+        line-height: 0;
+	    margin-left: 3%;
+	    margin-top: 1.5%;
+		color: #fff;
+		width:50%;
+		float:left;
+		max-width: 300px;
+    }
+    #side {
+    	color: #fff;
+    	float:left;
+    	width:50%;
+    	max-width: 300px;
+    }
+    #side a {
+    	color: #fff;
+    	text-decoration: none;
+    	background: #000;
+    	padding-left: 5px;
+    	padding-right: 5px;
+    	font-weight: bold;
+    }
+	#banner h1 a:link, #banner h1 a:visited {
+		display: block;
+		margin: 0 auto .6em auto;
+		text-decoration: none;
+		color: #fff;
+	}
+	#banner h1 a:hover, #banner h1 a:active {
+		background: none;
+		text-shadow: none;
+		color: #fcfcfc;
+	}
+	
+	#banner h1 strong {font-size: 0.36em; font-weight: normal;}
+	
+	
+	#banner nav {
+		clear: both; 
+		background: #343131;
+		font-size: 1.143em;
+		height: 40px;
+		line-height: 30px;
+		margin: 0 auto 2em auto;
+		padding: 0;
+		
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+	
+	#banner nav ul {list-style: none; margin: 0 auto;}
+	#banner nav li {float: left; display: inline; margin: 0;}
+	
+	#banner nav a:link, #banner nav a:visited {
+		color: #fcfcfc;
+		display: inline-block;
+		height: 30px;
+		padding: 5px 1.5em;
+		text-decoration: none;
+	}
+	#banner nav a:hover, #banner nav a:active,
+	#banner nav .active a:link, #banner nav .active a:visited {
+		background: #d00000;
+		color: #fcfcfc;
+		text-shadow: none !important;
+	}
+	
+	#banner nav li:first-child a {
+		border-top-left-radius: 5px;
+		-moz-border-radius-topleft: 5px;
+		-webkit-border-top-left-radius: 5px;
+		
+		border-bottom-left-radius: 5px;
+		-moz-border-radius-bottomleft: 5px;
+		-webkit-border-bottom-left-radius: 5px;
+	}
+
+
+#content {
+	background: #fcfcfc;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+    float: left;
+    margin-left: 5%;
+	margin-right: 5%;
+	background: #fcfcfc;
+	overflow: hidden;
+	padding: 5%;
+	padding-top: 2%;
+	min-width: 500px;
+	width: 80%;
+}
+
+
+#sidebar {
+    float: right; 
+    margin: 1em 7% 2em 10px;
+	background: #fcfcfc;
+	overflow: hidden;
+	padding: 20px 20px;
+	width: 15%;
+	
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#sidebar ul {list-style: none; margin: 0;}
+#sidebar li {border-bottom: 1px solid #fcfcfc;}
+
+#sidebar h2 {
+	color: #d00000;
+	font-size: 1.429em;
+	margin-top: .75em;
+	margin-bottom: .25em;
+	padding: 0 3px;
+}
+
+#sidebar a:link, #sidebar a {
+	color: #444;
+	display: block;
+	border-bottom: 1px solid #F4E3E3;
+	text-decoration: none;
+	padding: .3em .25em;
+}
+#sidebar li.active a {color: white;}
+
+#sidebar li:last-child,
+#sidebar li:last-child a {border: 0}
+
+#sidebar .blogroll li:nth-last-child(2),
+#sidebar .blogroll li:nth-last-child(3),
+#sidebar .blogroll li:nth-last-child(2) a,
+#sidebar .blogroll li:nth-last-child(3) a {border: 0;}
+
+#sidebar a:hover, #sidebar a:active {color: #fcfcfc;}
+
+	
+	#sidebar .blogroll {
+		width: 100%;
+	}
+	
+	#sidebar .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
+	
+	
+	.social a {
+		background-repeat: no-repeat;
+		background-position: 3px 6px;
+	}
+	
+		
+		.social a[href*='delicious.com']:before {content: url("https://blog.keras.io/theme/images/icons/delicious.png"); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='digg.com']:before {content: url("https://blog.keras.io/theme/images/icons/digg.png"); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='facebook.com']:before {content: url("https://blog.keras.io/theme/images/icons/facebook.png"); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='atom.xml']:before {content: url("https://blog.keras.io/theme/images/icons/rss.png"); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='last.fm']:before, .social a[href*='lastfm.']:before {content: url("https://blog.keras.io/theme/images/icons/rss.png"); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='jamendo.com']:before {content: url("https://blog.keras.io/theme/images/icons/jamendo.png"); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='stackoverflow.com']:before {content: url("https://blog.keras.io/theme/images/icons/stackoverflow.png"); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='rss.xml']:before {content: url("https://blog.keras.io/theme/images/icons/rss.png"); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='twitter.com']:before {content: url("https://blog.keras.io/theme/images/icons/twitter.png"); margin-right: 2px; vertical-align: -3px;}
+		.social a[href*='linkedin.com']:before {content: url("https://blog.keras.io/theme/images/icons/linkedin.png"); margin-right: 2px; vertical-align: -3px;}
+        .social a[href*='gitorious.org']:before {content: url("https://blog.keras.io/theme/images/icons/gitorious.png"); margin-right: 2px; vertical-align: -3px;}
+
+
+#about {
+	background: #fcfcfc;
+	font-style: normal;
+	margin-bottom: 2em;
+	overflow: hidden;
+	padding: 20px;
+	text-align: left;
+	
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#about .primary {float: left; width: 165px;}
+#about .primary strong {color: #C64350; display: block; font-size: 1.286em;}
+#about .photo {float: left; margin: 5px 20px;}
+
+#about .url:link, #about .url:visited {text-decoration: none;}
+
+#about .bio {float: right; width: 500px;}
+
+
+#footer {
+    text-align: center; 
+    clear: both; 
+    width: 90%;
+    margin: 5%;
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+
+
+
+.hentry {
+	border-bottom: 1px solid #eee;
+	padding: 1.5em 0;
+}
+li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
+#content > .hentry {padding: 1em 0;}
+.hentry img{display : none ;}
+.entry-title {font-size: 3em; margin-bottom: 10px; margin-top: 0;}
+.entry-title a:link, .entry-title a:visited {text-decoration: none; color: #333;}
+.entry-title a:visited {background-color: #fcfcfc;}
+
+.hentry .post-info * {font-style: normal;}
+
+	
+	.hentry footer {margin-bottom: 2em;}
+	.hentry footer address {display: inline;}
+	#posts-list footer address {display: block;}
+
+	
+	#posts-list {list-style: none; margin: 0;}
+	#posts-list .hentry {padding-left: 10px; position: relative;}
+	
+	#posts-list footer {
+		left: 10px;
+		position: relative;
+        float: left;
+		top: 0.5em;
+		width: 190px;
+	}
+	
+	
+	#about-author {
+		background: #f9f9f9;
+		clear: both;
+		font-style: normal;
+		margin: 2em 0;
+		padding: 10px 20px 15px 20px;
+		
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+	
+	#about-author strong {
+		color: #C64350;
+		clear: both;
+		display: block;
+		font-size: 1.429em;
+	}
+	
+	#about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
+	
+	
+	#comments-list {list-style: none; margin: 0 1em;}
+	#comments-list blockquote {
+		background: #f8f8f8;
+		clear: both;
+		font-style: normal;
+		margin: 0;
+		padding: 15px 20px;
+		
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+	#comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
+	
+	#comments-list li:nth-child(2n) blockquote {background: #F5f5f5;}
+	
+	
+	#add-comment label {clear: left; float: left; text-align: left; width: 150px;}
+	#add-comment input[type='text'],
+	#add-comment input[type='email'],
+	#add-comment input[type='url'] {float: left; width: 200px;}
+	
+	#add-comment textarea {float: left; height: 150px; width: 495px;}
+	
+	#add-comment p.req {clear: both; margin: 0 .5em 1em 0; text-align: right;}
+	
+	#add-comment input[type='submit'] {float: right; margin: 0 .5em;}
+	#add-comment * {margin-bottom: .5em;}</style><style class="darkreader darkreader--sync" media="screen"></style>
+        <link rel="stylesheet" href="Building%20Autoencoders%20in%20Keras-Dateien/pygment.css" type="text/css"><style class="darkreader darkreader--sync" media="screen"></style>
+
+        <link href="Building%20Autoencoders%20in%20Keras-Dateien/css.css" rel="stylesheet" type="text/css" media="">
+        <link href="https://blog.keras.io/" type="application/atom+xml" rel="alternate" title="The Keras Blog ATOM Feed">
+
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="//blog.keras.io/css/ie.css"/>
+                <script src="//blog.keras.io/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="//blog.keras.io/css/ie6.css"/><![endif]-->
+
+<meta name="darkreader" content="c3637ec685c7492e985e8c4c0900d346"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #7b5300 !important;
+    border-color: #d8b013 !important;
+    color: #f3e8c8 !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+a[href="https://coinmarketcap.com/"] > svg[width="94"][height="16"] > path {
+    fill: var(--darkreader-neutral-text) !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1 {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #0f3a48 !important;
+}
+embed[type="application/pdf"] { filter: invert(100%) contrast(90%); }</style></head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1>
+                    <a href="https://blog.keras.io/index.html">The Keras Blog </a>
+                </h1>
+                <p id="side">
+                    <a href="https://github.com/fchollet/keras">Keras</a> is a Deep Learning library for Python, that is simple, modular, and extensible.
+                </p>
+                <nav><ul>
+                <li><a href="https://blog.keras.io/">Archives</a></li>
+                    <li>
+                        <a href="https://github.com/fchollet/keras">Github</a>
+                    </li>
+                    <li>
+                        <a href="http://keras.io/">Documentation</a>
+                    </li>
+                    <li>
+                        <a href="https://groups.google.com/forum/#!forum/keras-users">Google Group</a>
+                    </li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+<section id="content" class="body">
+<article>
+        <header> <h1 class="entry-title"><a href="https://blog.keras.io/building-autoencoders-in-keras.html" rel="bookmark" title="Permalink to Building Autoencoders in Keras">Building Autoencoders in Keras</a></h1>  </header>
+        <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-05-14T00:00:00+02:00">
+                Sat 14 May 2016
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="https://twitter.com/fchollet">Francois Chollet</a>
+        </address>
+<p>In <a href="https://blog.keras.io/category/tutorials.html">Tutorials</a>. </p>
+<p></p></footer><!-- /.post-info --><!-- /.post-info -->
+        <div>
+    This post was written in early 2016. It is therefore badly outdated.
+</div>
+
+<p>In this tutorial, we will answer some common questions about 
+autoencoders, and we will cover code examples of the following models:</p>
+<ul>
+<li>a simple autoencoder based on a fully-connected layer</li>
+<li>a sparse autoencoder</li>
+<li>a deep fully-connected autoencoder</li>
+<li>a deep convolutional autoencoder</li>
+<li>an image denoising model</li>
+<li>a sequence-to-sequence autoencoder</li>
+<li>a variational autoencoder</li>
+</ul>
+<p><strong>Note: all code examples have been updated to the Keras 2.0 
+API on March 14, 2017. You will need Keras version 2.0.0 or higher to 
+run them.</strong></p>
+<hr>
+<h2>What are autoencoders?</h2>
+<p><img alt="Autoencoder: schema" src="Building%20Autoencoders%20in%20Keras-Dateien/autoencoder_schema.jpg"></p>
+<p>"Autoencoding" is a data compression algorithm where the compression 
+and decompression functions are 1) data-specific, 2) lossy, and 3) <em>learned automatically from examples</em>
+ rather than engineered by a human. Additionally, in almost all contexts
+ where the term "autoencoder" is used, the compression and decompression
+ functions are implemented with neural networks.</p>
+<p>1) Autoencoders are data-specific, which means that they will only be
+ able to compress data similar to what they have been trained on. This 
+is different from, say, the MPEG-2 Audio Layer III (MP3) compression 
+algorithm, which only holds assumptions about "sound" in general, but 
+not about specific types of sounds. An autoencoder trained on pictures 
+of faces would do a rather poor job of compressing pictures of trees, 
+because the features it would learn would be face-specific.</p>
+<p>2) Autoencoders are lossy, which means that the decompressed outputs 
+will be degraded compared to the original inputs (similar to MP3 or JPEG
+ compression). This differs from lossless arithmetic compression.</p>
+<p>3) Autoencoders are learned automatically from data examples, which 
+is a useful property: it means that it is easy to train specialized 
+instances of the algorithm that will perform well on a specific type of 
+input. It doesn't require any new engineering, just appropriate training
+ data.</p>
+<p>To build an autoencoder, you need three things: an encoding function,
+ a decoding function, and a distance function between the amount of 
+information loss between the compressed representation of your data and 
+the decompressed representation (i.e. a "loss" function). The encoder 
+and decoder will be chosen to be parametric functions (typically neural 
+networks), and to be differentiable with respect to the distance 
+function, so the parameters of the encoding/decoding functions can be 
+optimize to minimize the reconstruction loss, using Stochastic Gradient 
+Descent. It's simple! And you don't even need to understand any of these
+ words to start using autoencoders in practice.</p>
+<h2>Are they good at data compression?</h2>
+<p>Usually, not really. In picture compression for instance, it is 
+pretty difficult to train an autoencoder that does a better job than a 
+basic algorithm like JPEG, and typically the only way it can be achieved
+ is by restricting yourself to a very specific type of picture (e.g. one
+ for which JPEG does not do a good job). The fact that autoencoders are 
+data-specific makes them generally impractical for real-world data 
+compression problems: you can only use them on data that is similar to 
+what they were trained on, and making them more general thus requires <em>lots</em> of training data. But future advances might change this, who knows.</p>
+<h2>What are autoencoders good for?</h2>
+<p>They are rarely used in practical applications. In 2012 they briefly 
+found an application in greedy layer-wise pretraining for deep 
+convolutional neural networks [1], but this quickly fell out of fashion 
+as we started realizing that better random weight initialization schemes
+ were sufficient for training deep networks from scratch. In 2014, batch
+ normalization [2] started allowing for even deeper networks, and from 
+late 2015 we could train arbitrarily deep networks from scratch using 
+residual learning [3].</p>
+<p>Today two interesting practical applications of autoencoders are <strong>data denoising</strong> (which we feature later in this post), and <strong>dimensionality reduction for data visualization</strong>.
+ With appropriate dimensionality and sparsity constraints, autoencoders 
+can learn data projections that are more interesting than PCA or other 
+basic techniques.</p>
+<p>For 2D visualization specifically, <a href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding">t-SNE</a>
+ (pronounced "tee-snee") is probably the best algorithm around, but it 
+typically requires relatively low-dimensional data. So a good strategy 
+for visualizing similarity relationships in high-dimensional data is to 
+start by using an autoencoder to compress your data into a 
+low-dimensional space (e.g. 32-dimensional), then use t-SNE for mapping 
+the compressed data to a 2D plane. Note that a nice parametric 
+implementation of t-SNE in Keras was developed by Kyle McDonald and <a href="https://github.com/kylemcdonald/Parametric-t-SNE/blob/master/Parametric%20t-SNE%20(Keras).ipynb">is available on Github</a>. Otherwise <a href="http://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html">scikit-learn</a> also has a simple and practical implementation.</p>
+<h2>So what's the big deal with autoencoders?</h2>
+<p>Their main claim to fame comes from being featured in many 
+introductory machine learning classes available online. As a result, a 
+lot of newcomers to the field absolutely love autoencoders and can't get
+ enough of them. This is the reason why this tutorial exists!</p>
+<p>Otherwise, one reason why they have attracted so much research and 
+attention is because they have long been thought to be a potential 
+avenue for solving the problem of unsupervised learning, i.e. the 
+learning of useful representations without the need for labels. Then 
+again, autoencoders are not a true unsupervised learning technique 
+(which would imply a different learning process altogether), they are a <em>self-supervised</em> technique, a specific instance of <em>supervised learning</em>
+ where the targets are generated from the input data. In order to get 
+self-supervised models to learn interesting features, you have to come 
+up with an interesting synthetic target and loss function, and that's 
+where problems arise: merely learning to reconstruct your input in 
+minute detail might not be the right choice here. At this point there is
+ significant evidence that focusing on the reconstruction of a picture 
+at the pixel level, for instance, is not conductive to learning 
+interesting, abstract features of the kind that label-supervized 
+learning induces (where targets are fairly abstract concepts "invented" 
+by humans such as "dog", "car"...). In fact, one may argue that the best
+ features in this regard are those that are the <em>worst</em> at exact 
+input reconstruction while achieving high performance on the main task 
+that you are interested in (classification, localization, etc).</p>
+<p>In self-supervized learning applied to vision, a potentially fruitful
+ alternative to autoencoder-style input reconstruction is the use of toy
+ tasks such as jigsaw puzzle solving, or detail-context matching (being 
+able to match high-resolution but small patches of pictures with 
+low-resolution versions of the pictures they are extracted from). The 
+following paper investigates jigsaw puzzle solving and makes for a very 
+interesting read: Noroozi and Favaro (2016) <a href="http://arxiv.org/abs/1603.09246">Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles</a>.
+ Such tasks are providing the model with built-in assumptions about the 
+input data which are missing in traditional autoencoders, such as <em>"visual macro-structure matters more than pixel-level details"</em>.</p>
+<p><img alt="jigsaw puzzle task" src="Building%20Autoencoders%20in%20Keras-Dateien/jigsaw-puzzle.png"></p>
+<hr>
+<h2>Let's build the simplest possible autoencoder</h2>
+<p>We'll start simple, with a single fully-connected neural layer as encoder and as decoder:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">keras</span>
+<span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">layers</span>
+
+<span class="c1"># This is the size of our encoded representations</span>
+<span class="n">encoding_dim</span> <span class="o">=</span> <span class="mi">32</span>  <span class="c1"># 32 floats -&gt; compression of factor 24.5, assuming the input is 784 floats</span>
+
+<span class="c1"># This is our input image</span>
+<span class="n">input_img</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">784</span><span class="p">,))</span>
+<span class="c1"># "encoded" is the encoded representation of the input</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">encoding_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">input_img</span><span class="p">)</span>
+<span class="c1"># "decoded" is the lossy reconstruction of the input</span>
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'sigmoid'</span><span class="p">)(</span><span class="n">encoded</span><span class="p">)</span>
+
+<span class="c1"># This model maps an input to its reconstruction</span>
+<span class="n">autoencoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">decoded</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Let's also create a separate encoder model:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># This model maps an input to its encoded representation</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">encoded</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>As well as the decoder model:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># This is our encoded (32-dimensional) input</span>
+<span class="n">encoded_input</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">encoding_dim</span><span class="p">,))</span>
+<span class="c1"># Retrieve the last layer of the autoencoder model</span>
+<span class="n">decoder_layer</span> <span class="o">=</span> <span class="n">autoencoder</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># Create the decoder model</span>
+<span class="n">decoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">encoded_input</span><span class="p">,</span> <span class="n">decoder_layer</span><span class="p">(</span><span class="n">encoded_input</span><span class="p">))</span>
+</code></pre></div>
+
+
+<p>Now let's train our autoencoder to reconstruct MNIST digits. </p>
+<p>First, we'll configure our model to use a per-pixel binary crossentropy loss, and the Adam optimizer:</p>
+<div class="highlight"><pre><span></span><code><span class="n">autoencoder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">'binary_crossentropy'</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Let's prepare our input data. We're using MNIST digits, and we're 
+discarding the labels (since we're only interested in encoding/decoding 
+the input images).</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">_</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>We will normalize all values between 0 and 1 and we will flatten the 28x28 images into vectors of size 784.</p>
+<div class="highlight"><pre><span></span><code><span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x_train</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])))</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Now let's train our autoencoder for 50 epochs:</p>
+<div class="highlight"><pre><span></span><code><span class="n">autoencoder</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span>
+                <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+                <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">x_test</span><span class="p">))</span>
+</code></pre></div>
+
+
+<p>After 50 epochs, the autoencoder seems to reach a stable train/validation loss value of about <code>0.09</code>. We can try to visualize the reconstructed inputs and the encoded representations. We will use Matplotlib.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Encode and decode some digits</span>
+<span class="c1"># Note that we take them from the *test* set</span>
+<span class="n">encoded_imgs</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="n">decoded_imgs</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">encoded_imgs</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Use Matplotlib (don't ask)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># How many digits we will display</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># Display original</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Display reconstruction</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">decoded_imgs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>Here's what we get. The top row is the original digits, and the 
+bottom row is the reconstructed digits. We are losing quite a bit of 
+detail with this basic approach.</p>
+<p><img alt="basic autoencoder" src="Building%20Autoencoders%20in%20Keras-Dateien/basic_ae_32.png"></p>
+<hr>
+<h2>Adding a sparsity constraint on the encoded representations</h2>
+<p>In the previous example, the representations were only constrained by
+ the size of the hidden layer (32). In such a situation, what typically 
+happens is that the hidden layer is learning an approximation of <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA (principal component analysis)</a>.
+ But another way to constrain the representations to be compact is to 
+add a sparsity contraint on the activity of the hidden representations, 
+so fewer units would "fire" at a given time. In Keras, this can be done 
+by adding an <code>activity_regularizer</code> to our <code>Dense</code> layer:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">regularizers</span>
+
+<span class="n">encoding_dim</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="n">input_img</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">784</span><span class="p">,))</span>
+<span class="c1"># Add a Dense layer with a L1 activity regularizer</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">encoding_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span>
+                <span class="n">activity_regularizer</span><span class="o">=</span><span class="n">regularizers</span><span class="o">.</span><span class="n">l1</span><span class="p">(</span><span class="mf">10e-5</span><span class="p">))(</span><span class="n">input_img</span><span class="p">)</span>
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'sigmoid'</span><span class="p">)(</span><span class="n">encoded</span><span class="p">)</span>
+
+<span class="n">autoencoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">decoded</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Let's train this model for 100 epochs (with the added regularization 
+the model is less likely to overfit and can be trained longer). The 
+models ends with a train loss of <code>0.11</code> and test loss of <code>0.10</code>.
+ The difference between the two is mostly due to the regularization term
+ being added to the loss during training (worth about 0.01).</p>
+<p>Here's a visualization of our new results:</p>
+<p><img alt="sparse autoencoder" src="Building%20Autoencoders%20in%20Keras-Dateien/sparse_ae_32.png"></p>
+<p>They look pretty similar to the previous model, the only significant 
+difference being the sparsity of the encoded representations. <code>encoded_imgs.mean()</code> yields a value <code>3.33</code> (over our 10,000 test images), whereas with the previous model the same quantity was <code>7.30</code>. So our new model yields encoded representations that are twice sparser.</p>
+<hr>
+<h2>Deep autoencoder</h2>
+<p>We do not have to limit ourselves to a single layer as encoder or decoder, we could instead use a stack of layers, such as:</p>
+<div class="highlight"><pre><span></span><code><span class="n">input_img</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">784</span><span class="p">,))</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">input_img</span><span class="p">)</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">encoded</span><span class="p">)</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">encoded</span><span class="p">)</span>
+
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">encoded</span><span class="p">)</span>
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">decoded</span><span class="p">)</span>
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'sigmoid'</span><span class="p">)(</span><span class="n">decoded</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Let's try this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">autoencoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">decoded</span><span class="p">)</span>
+<span class="n">autoencoder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">'binary_crossentropy'</span><span class="p">)</span>
+
+<span class="n">autoencoder</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span>
+                <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+                <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">x_test</span><span class="p">))</span>
+</code></pre></div>
+
+
+<p>After 100 epochs, it reaches a train and validation loss of ~0.08, a 
+bit better than our previous models. Our reconstructed digits look a bit
+ better too:</p>
+<p><img alt="deep autoencoder" src="Building%20Autoencoders%20in%20Keras-Dateien/deep_ae_32.png"></p>
+<hr>
+<h2>Convolutional autoencoder</h2>
+<p>Since our inputs are images, it makes sense to use convolutional 
+neural networks (convnets) as encoders and decoders. In practical 
+settings, autoencoders applied to images are always convolutional 
+autoencoders --they simply perform much better.</p>
+<p>Let's implement one. The encoder will consist in a stack of <code>Conv2D</code> and <code>MaxPooling2D</code> layers (max pooling being used for spatial down-sampling), while the decoder will consist in a stack of <code>Conv2D</code> and <code>UpSampling2D</code> layers.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">keras</span>
+<span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">layers</span>
+
+<span class="n">input_img</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">input_img</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># at this point the representation is (4, 4, 8) i.e. 128-dimensional</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">encoded</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">UpSampling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">UpSampling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">UpSampling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'sigmoid'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">autoencoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">decoded</span><span class="p">)</span>
+<span class="n">autoencoder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">'binary_crossentropy'</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>To train it, we will use the original MNIST digits with shape <code>(samples, 3, 28, 28)</code>, and we will just normalize pixel values between 0 and 1.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">_</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_train</span><span class="p">),</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">),</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+
+<p>Let's train this model for 50 epochs. For the sake of demonstrating 
+how to visualize the results of a model during training, we will be 
+using <a href="">the TensorFlow backend</a> and the TensorBoard callback.</p>
+<p>First, let's open up a terminal and start a TensorBoard server that will read logs stored at <code>/tmp/autoencoder</code>.</p>
+<div class="highlight"><pre><span></span><code>tensorboard --logdir<span class="o">=</span>/tmp/autoencoder
+</code></pre></div>
+
+
+<p>Then let's train our model. In the <code>callbacks</code> list we pass an instance of the <code>TensorBoard</code> callback. After every epoch, this callback will write logs to <code>/tmp/autoencoder</code>, which can be read by our TensorBoard server.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">keras.callbacks</span> <span class="kn">import</span> <span class="n">TensorBoard</span>
+
+<span class="n">autoencoder</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span>
+                <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+                <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">x_test</span><span class="p">),</span>
+                <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s1">'/tmp/autoencoder'</span><span class="p">)])</span>
+</code></pre></div>
+
+
+<p>This allows us to monitor training in the TensorBoard web interface (by navighating to <code>http://0.0.0.0:6006</code>):</p>
+<p><img alt="tensorboard curves" src="Building%20Autoencoders%20in%20Keras-Dateien/tb_curves.png"></p>
+<p>The model converges to a loss of 0.094, significantly better than our
+ previous models (this is in large part due to the higher entropic 
+capacity of the encoded representation, 128 dimensions vs. 32 
+previously). Let's take a look at the reconstructed digits:</p>
+<div class="highlight"><pre><span></span><code><span class="n">decoded_imgs</span> <span class="o">=</span> <span class="n">autoencoder</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># Display original</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Display reconstruction</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">decoded_imgs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p><img alt="convolutional autoencoder" src="Building%20Autoencoders%20in%20Keras-Dateien/deep_conv_ae_128.png"></p>
+<p>We can also have a look at the 128-dimensional encoded 
+representations. These representations are 8x4x4, so we reshape them to 
+4x32 in order to be able to display them as grayscale images.</p>
+<div class="highlight"><pre><span></span><code><span class="n">encoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">encoded</span><span class="p">)</span>
+<span class="n">encoded_imgs</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">encoded_imgs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">8</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p><img alt="latent representations" src="Building%20Autoencoders%20in%20Keras-Dateien/encoded_representations.png"></p>
+<hr>
+<h2>Application to image denoising</h2>
+<p>Let's put our convolutional autoencoder to work on an image denoising
+ problem. It's simple: we will train the autoencoder to map noisy digits
+ images to clean digits images.</p>
+<p>Here's how we will generate synthetic noisy digits: we just apply a gaussian noise matrix and clip the images between 0 and 1.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">_</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_train</span><span class="p">),</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">),</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">noise_factor</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">x_train_noisy</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">+</span> <span class="n">noise_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> 
+<span class="n">x_test_noisy</span> <span class="o">=</span> <span class="n">x_test</span> <span class="o">+</span> <span class="n">noise_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> 
+
+<span class="n">x_train_noisy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x_train_noisy</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">x_test_noisy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x_test_noisy</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Here's what the noisy digits look like:</p>
+<div class="highlight"><pre><span></span><code><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_test_noisy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p><img alt="noisy digits" src="Building%20Autoencoders%20in%20Keras-Dateien/noisy_digits.png"></p>
+<p>If you squint you can still recognize them, but barely. Can our 
+autoencoder learn to recover the original digits? Let's find out.</p>
+<p>Compared to the previous convolutional autoencoder, in order to 
+improve the quality of the reconstructed, we'll use a slightly different
+ model with more filters per layer:</p>
+<div class="highlight"><pre><span></span><code><span class="n">input_img</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">input_img</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># At this point the representation is (7, 7, 32)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">encoded</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">UpSampling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">UpSampling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'sigmoid'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">autoencoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">decoded</span><span class="p">)</span>
+<span class="n">autoencoder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">'binary_crossentropy'</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Let's train it for 100 epochs:</p>
+<div class="highlight"><pre><span></span><code><span class="n">autoencoder</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_noisy</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span>
+                <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+                <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test_noisy</span><span class="p">,</span> <span class="n">x_test</span><span class="p">),</span>
+                <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s1">'/tmp/tb'</span><span class="p">,</span> <span class="n">histogram_freq</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">write_graph</span><span class="o">=</span><span class="kc">False</span><span class="p">)])</span>
+</code></pre></div>
+
+
+<p>Now let's take a look at the results. Top, the noisy digits fed to 
+the network, and bottom, the digits are reconstructed by the network.</p>
+<p><img alt="denoised digits" src="Building%20Autoencoders%20in%20Keras-Dateien/denoised_digits.png"></p>
+<p>It seems to work pretty well. If you scale this process to a bigger 
+convnet, you can start building document denoising or audio denoising 
+models. <a href="https://www.kaggle.com/c/denoising-dirty-documents">Kaggle has an interesting dataset to get you started</a>.</p>
+<hr>
+<h2>Sequence-to-sequence autoencoder</h2>
+<p>If you inputs are sequences, rather than vectors or 2D images, then 
+you may want to use as encoder and decoder a type of model that can 
+capture temporal structure, such as a LSTM. To build a LSTM-based 
+autoencoder, first use a LSTM encoder to turn your input sequences into a
+ single vector that contains information about the entire sequence, then
+ repeat this vector <code>n</code> times (where <code>n</code> is the 
+number of timesteps in the output sequence), and run a LSTM decoder to 
+turn this constant sequence into the target sequence.</p>
+<p>We won't be demonstrating that one on any specific dataset. We will 
+just put a code example here for future reference for the reader!</p>
+<div class="highlight"><pre><span></span><code><span class="n">timesteps</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># Length of your sequences</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="o">...</span> 
+<span class="n">latent_dim</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">))</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">RepeatVector</span><span class="p">(</span><span class="n">timesteps</span><span class="p">)(</span><span class="n">encoded</span><span class="p">)</span>
+<span class="n">decoded</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">decoded</span><span class="p">)</span>
+
+<span class="n">sequence_autoencoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">decoded</span><span class="p">)</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">encoded</span><span class="p">)</span>
+</code></pre></div>
+
+
+<hr>
+<h2>Variational autoencoder (VAE)</h2>
+<p>Variational autoencoders are a slightly more modern and interesting take on autoencoding.</p>
+<p>What is a variational autoencoder, you ask? It's a type of 
+autoencoder with added constraints on the encoded representations being 
+learned. More precisely, it is an autoencoder that learns a <a href="https://en.wikipedia.org/wiki/Latent_variable_model">latent variable model</a>
+ for its input data. So instead of letting your neural network learn an 
+arbitrary function, you are learning the parameters of a probability 
+distribution modeling your data. If you sample points from this 
+distribution, you can generate new input data samples: a VAE is a 
+"generative model".</p>
+<p>How does a variational autoencoder work? </p>
+<p>First, an encoder network turns the input samples <code>x</code> into two parameters in a latent space, which we will note <code>z_mean</code> and <code>z_log_sigma</code>. Then, we randomly sample similar points <code>z</code> from the latent normal distribution that is assumed to generate the data, via <code>z = z_mean + exp(z_log_sigma) * epsilon</code>, where <code>epsilon</code> is a random normal tensor. Finally, a decoder network maps these latent space points back to the original input data.</p>
+<p>The parameters of the model are trained via two loss functions: a 
+reconstruction loss forcing the decoded samples to match the initial 
+inputs (just like in our previous autoencoders), and the KL divergence 
+between the learned latent distribution and the prior distribution, 
+acting as a regularization term. You could actually get rid of this 
+latter term entirely, although it does help in learning well-formed 
+latent spaces and reducing overfitting to the training data.</p>
+<p>Because a VAE is a more complex example, we have made the code available on Github as <a href="https://github.com/fchollet/keras/blob/master/examples/variational_autoencoder.py">a standalone script</a>. Here we will review step by step how the model is created.</p>
+<p>First, here's our encoder network, mapping inputs to our latent distribution parameters:</p>
+<div class="highlight"><pre><span></span><code><span class="n">original_dim</span> <span class="o">=</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span>
+<span class="n">intermediate_dim</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">latent_dim</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">original_dim</span><span class="p">,))</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">intermediate_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">z_mean</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">)(</span><span class="n">h</span><span class="p">)</span>
+<span class="n">z_log_sigma</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">)(</span><span class="n">h</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>We can use these parameters to sample new similar points from the latent space:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+
+<span class="k">def</span> <span class="nf">sampling</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">z_mean</span><span class="p">,</span> <span class="n">z_log_sigma</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">random_normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">z_mean</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">latent_dim</span><span class="p">),</span>
+                              <span class="n">mean</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">z_mean</span> <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z_log_sigma</span><span class="p">)</span> <span class="o">*</span> <span class="n">epsilon</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="n">sampling</span><span class="p">)([</span><span class="n">z_mean</span><span class="p">,</span> <span class="n">z_log_sigma</span><span class="p">])</span>
+</code></pre></div>
+
+
+<p>Finally, we can map these sampled latent points back to reconstructed inputs:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create encoder</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">[</span><span class="n">z_mean</span><span class="p">,</span> <span class="n">z_log_sigma</span><span class="p">,</span> <span class="n">z</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'encoder'</span><span class="p">)</span>
+
+<span class="c1"># Create decoder</span>
+<span class="n">latent_inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s1">'z_sampling'</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">intermediate_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">)(</span><span class="n">latent_inputs</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">original_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'sigmoid'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">decoder</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">latent_inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'decoder'</span><span class="p">)</span>
+
+<span class="c1"># instantiate VAE model</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">(</span><span class="n">encoder</span><span class="p">(</span><span class="n">inputs</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">vae</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'vae_mlp'</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>What we've done so far allows us to instantiate 3 models:</p>
+<ul>
+<li>an end-to-end autoencoder mapping inputs to reconstructions</li>
+<li>an encoder mapping inputs to the latent space</li>
+<li>a generator that can take points on the latent space and will output the corresponding reconstructed samples.</li>
+</ul>
+<p>We train the model using the end-to-end model, with a custom loss 
+function: the sum of a reconstruction term, and the KL divergence 
+regularization term.</p>
+<div class="highlight"><pre><span></span><code><span class="n">reconstruction_loss</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">binary_crossentropy</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+<span class="n">reconstruction_loss</span> <span class="o">*=</span> <span class="n">original_dim</span>
+<span class="n">kl_loss</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">z_log_sigma</span> <span class="o">-</span> <span class="n">K</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">z_mean</span><span class="p">)</span> <span class="o">-</span> <span class="n">K</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z_log_sigma</span><span class="p">)</span>
+<span class="n">kl_loss</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kl_loss</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">kl_loss</span> <span class="o">*=</span> <span class="o">-</span><span class="mf">0.5</span>
+<span class="n">vae_loss</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">reconstruction_loss</span> <span class="o">+</span> <span class="n">kl_loss</span><span class="p">)</span>
+<span class="n">vae</span><span class="o">.</span><span class="n">add_loss</span><span class="p">(</span><span class="n">vae_loss</span><span class="p">)</span>
+<span class="n">vae</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>We train our VAE on MNIST digits:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x_train</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])))</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])))</span>
+
+<span class="n">vae</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_train</span><span class="p">,</span>
+        <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+        <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">x_test</span><span class="p">))</span>
+</code></pre></div>
+
+
+<p>Because our latent space is two-dimensional, there are a few cool 
+visualizations that can be done at this point. One is to look at the 
+neighborhoods of different classes on the latent 2D plane: </p>
+<div class="highlight"><pre><span></span><code><span class="n">x_test_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_test_encoded</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">x_test_encoded</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p><img alt="vae classes plane" src="Building%20Autoencoders%20in%20Keras-Dateien/vae_classes_plane.png"></p>
+<p>Each of these colored clusters is a type of digit. Close clusters are
+ digits that are structurally similar (i.e. digits that share 
+information in the latent space).</p>
+<p>Because the VAE is a generative model, we can also use it to generate
+ new digits! Here we will scan the latent plane, sampling latent points 
+at regular intervals, and generating the corresponding digit for each of
+ these points. This gives us a visualization of the latent manifold that
+ "generates" the MNIST digits.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Display a 2D manifold of the digits</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># figure with 15x15 digits</span>
+<span class="n">digit_size</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">figure</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">digit_size</span> <span class="o">*</span> <span class="n">n</span><span class="p">,</span> <span class="n">digit_size</span> <span class="o">*</span> <span class="n">n</span><span class="p">))</span>
+<span class="c1"># We will sample n points within [-15, 15] standard deviations</span>
+<span class="n">grid_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">grid_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">yi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">grid_x</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">xi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">grid_y</span><span class="p">):</span>
+        <span class="n">z_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">]])</span>
+        <span class="n">x_decoded</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">z_sample</span><span class="p">)</span>
+        <span class="n">digit</span> <span class="o">=</span> <span class="n">x_decoded</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">digit_size</span><span class="p">,</span> <span class="n">digit_size</span><span class="p">)</span>
+        <span class="n">figure</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">digit_size</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">digit_size</span><span class="p">,</span>
+               <span class="n">j</span> <span class="o">*</span> <span class="n">digit_size</span><span class="p">:</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">digit_size</span><span class="p">]</span> <span class="o">=</span> <span class="n">digit</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">figure</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p><img alt="vae classes plane" src="Building%20Autoencoders%20in%20Keras-Dateien/vae_digits_manifold.png"></p>
+<p>That's it! If you have suggestions for more topics to be covered in 
+this post (or in future posts), you can contact me on Twitter at <a href="https://twitter.com/fchollet">@fchollet</a>.</p>
+<hr>
+<h3>References</h3>
+<p>[1] <a href="http://www.jmlr.org/papers/volume11/erhan10a/erhan10a.pdf">Why does unsupervised pre-training help deep learning?</a></p>
+<p>[2] <a href="http://arxiv.org/abs/1502.03167">Batch normalization: Accelerating deep network training by reducing internal covariate shift.</a></p>
+<p>[3] <a href="http://arxiv.org/abs/1512.03385">Deep Residual Learning for Image Recognition</a></p>
+<p>[4] <a href="http://arxiv.org/abs/1312.6114">Auto-Encoding Variational Bayes</a></p>
+        </div><!-- /.entry-content -->
+
+</article>
+</section>
+
+        <footer id="footer" class="body">
+                <address id="about" class="vcard body">
+                Powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org/">python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#footer -->
+
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-61785484-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+
+</body></html>
