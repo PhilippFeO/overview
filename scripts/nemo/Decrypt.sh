@@ -6,10 +6,14 @@
 # Unterscheidung schwierig ist, denn falls keine Dateiendung vorhanden ist, wird ".gpg" in "file_marker" gespeichert und diese Datei
 # existiert immer, soll aber nicht immer gelöscht werden.
 
+export PS4="\$LINENO: "
+set -xv
+
 # Verschlüsseltes Archiv aus Pfad extrahieren
 IFS="/"
 read -ra array <<< "$NEMO_SCRIPT_SELECTED_FILE_PATHS"
 encrypted_file_name=${array[-1]}
+#encrypted_file_name=~/Dokumente/Unterschriften2.tar.gpg
 
 # Prüfen, ob Datei ausgewählt wurde
 if [ "$encrypted_file_name" = "" ]; then

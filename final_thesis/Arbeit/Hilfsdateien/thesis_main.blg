@@ -1,5 +1,0 @@
-[0] Config.pm:311> INFO - This is Biber 2.16
-[0] Config.pm:314> INFO - Logfile is 'Hilfsdateien/thesis_main.blg'
-[39] biber:340> INFO - === Do Jul  7, 2022, 17:57:46
-[47] Utils.pm:400> ERROR - Hilfsdateien/thesis_main.bcf is malformed, last biblatex run probably failed. Deleted Hilfsdateien/thesis_main.bbl
-[47] Biber.pm:132> INFO - ERRORS: 1

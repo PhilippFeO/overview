@@ -1,2 +1,0 @@
-model: 0.5076714980713809 (Distance between <Ground Truth> and <Transition Probability Matrix; t=1, DF=0.5>)
-model: 0.5076714981028833 (Distance between <Ground Truth> and <SR, t=2, DF=0.5>)
