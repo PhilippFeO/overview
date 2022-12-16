@@ -1,0 +1,22 @@
+Überladen
+https://www.youtube.com/watch?v=yWzMiaqnpkI
+	(selber Name, andere Signatur (und damit evtl. auch andere Funktionalität)
+	geht eigentlich nicht aber Metaklassen schon
+		class A(metaclass=OverloadMeta):
+			@overload
+			def f(self, x: int):
+				...
+			
+			@overload
+			def f(self, x: str):
+				...
+	
+	type(instance) = <class myClass>
+	type(myClass) = <class type> => Der Typ einer Klasse ist <type>
+	
+	Class und type sind in python dasselbe.
+	Das class-Schlüsselwort ist nur Syntaxzucker um Typen zu instanziieren.
+	Wird im obigen Video hier (https://youtu.be/yWzMiaqnpkI?t=191) erklärt
+	
+	Wenn man eigene Metaklasse (einfach von type erben) definiert, kann beeinflussen, wie eine Klasse erstellt wird.
+	Standardmäßig wird die Klasse type verwendet.

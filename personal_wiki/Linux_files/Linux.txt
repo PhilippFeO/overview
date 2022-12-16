@@ -1,0 +1,47 @@
+DATEIEN SICHER LÖSCHEN
+	shred -fuz <DATEI>
+
+	Verzeichnisinhalte
+		find <VERZEICHNIS> -type f -print0 | xargs -0 shred -fuz
+
+	https://wiki.ubuntuusers.de/shred/
+
+GnuPG/VERSCHLÜSSELN
+	Verschlüsseln:
+		gpg --encrypt --armor --recipient <NAME oder SCHLÜSSEL-ID> <DATEI>
+			kurz: gpg -ear <NAME oder SCHLÜSSEL-ID> <DATEI>
+			-a, --armor: Versieht Datei mit ASCII-Hülle, sodass man sie leichter versenden kann
+	Entschlüsseln:
+		gpg --decrypt --output <AUSGABENAME> <VERSCHLÜSSELTE DATEI>
+			kurz: gpg -d -o <AUSGABENAME> <VERSCHLÜSSELTE DATEI>
+	GnuPG: https://wiki.ubuntuusers.de/GnuPG/
+	Seahorse: https://wiki.ubuntuusers.de/Seahorse/
+	
+	Man kann direkt mit Rechtsklick in Nautilus verschlüsseln!
+
+NEMO/NAUTILUS
+	Haben beide die Möglichkeit Skripte zu hinterlegen
+	Nemo
+		~/.local/share/nemo/scripts
+		Bearbeiten -> Module (Alt + P)
+	Nautilus
+		~/.local/share/nautilus/scripts
+		
+	An das Skript wird in beiden Fällen Informationen bspw. über die Datei übergeben (https://wiki.ubuntuusers.de/Nautilus/Skripte/#Skripte-selbst-schreiben). Möchte man das Skript für nemo statt nautilus verwenden, muss man „NEMO_*“ durch „NAUTILUS_*“ ersetzen (https://wiki.ubuntuusers.de/Nemo/#Skripte).
+	
+	https://wiki.ubuntuusers.de/Nautilus/Skripte/
+
+ARCHIVE ANLEGEN, KOMPRIMIEREN, tar
+	Ein Archiv mit dem Namen archiv.tar mit den Dateien datei_1.txt und allen Dateien vom Typ *.pdf anlegen:
+		tar -cf archiv.tar datei_1.txt *.pdf
+	Ein Archiv mit dem Ordner daten inklusive aller Unterordner und Dateien anlegen:
+		tar -cf archiv.tar daten/
+	
+	https://wiki.ubuntuusers.de/tar/
+
+ZENITY
+	Hilfreich, um Fenster oder Benachrichtigungen anzuzeigen, s.
+		zenity --help 
+	für mehr Informationen
+	
+	https://wiki.ubuntuusers.de/Zenity/
