@@ -1,6 +1,13 @@
 # Wahrscheinlichkeitstheorie
 Angelegt Dienstag 17 Mai 2022
 
+Unterseiten
+-----------
+
+* [+tmp](./Wahrscheinlichkeitstheorie/tmp.md)
+
+
+
 Wahrscheinlichkeitsverteilung
 -----------------------------
 

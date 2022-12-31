@@ -1,6 +1,14 @@
 # Lineare Algebra
 Angelegt Dienstag 31 Mai 2022
 
+Unterseiten
+-----------
+
+* [+Eigenwerte und -vektoren](./Lineare_Algebra/Eigenwerte_und_-vektoren.md)
+* [+Singulärwertzerlegung](./Lineare_Algebra/Singulärwertzerlegung.md)
+
+
+
 **Centering Matrix**/**Zentrierungsmatrix**: <https://en.wikipedia.org/wiki/Centering_matrix>
 
 Matrix-Vektor-Produkt

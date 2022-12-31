@@ -5,6 +5,16 @@ Unterseiten
 -----------
 
 * [+3Blue1Brown](./Mathematik_files/3Blue1Brown.md)
+* [+Deep Learning](./Mathematik_files/Deep_Learning.md)
+* [+Funktionalanalysis](./Mathematik_files/Funktionalanalysis.md)
+* [+Lebesgue-Integral](./Mathematik_files/Lebesgue-Integral.md)
+* [+Lineare Algebra](./Mathematik_files/Lineare_Algebra.md)
+* [+Markov-Ketten](./Mathematik_files/Markov-Ketten.md)
+* [+Maßtheorie](./Mathematik_files/Maßtheorie.md)
+* [+Numerik](./Mathematik_files/Numerik.md)
+* [+Optimierung](./Mathematik_files/Optimierung.md)
+* [+Wahrscheinlichkeitstheorie](./Mathematik_files/Wahrscheinlichkeitstheorie.md)
+* [+Weitz](./Mathematik_files/Weitz.md)
 
 
 Gescannte Niederschriften
