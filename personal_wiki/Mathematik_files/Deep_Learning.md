@@ -17,7 +17,6 @@ Allgemeines
 * Die Kostenfunktion ist glatt in W, b, dh. hält man Eingabe x und z = Φ(x) fest, kann man Kostenfunktion in den Argumenten w,b mit Gradientenabstieg minimieren
 
 
-
 ### Netztwerke als Funktionsapproximierer
 
 * kapitelS. 16: Netzwerke mit wenigstens einer *versteckten Schicht* können praktisch alle Funktionen lernen/approximieren, wenn Daten aus Kompaktum stammen.
@@ -74,6 +73,23 @@ The most common nonlinear activation functions used for neural networks are the 
 	* Entspricht euklidischer Distanz (for allem für endliche Werte), dh. mit ihr berechnet man Distanz zwischen Ebene und Φ(x), die minimiert werden soll (S43)
 * Mean Square Error: ist relativ beliebt, Gründe auf S44; gut, möchte man Zufallsvariablen lernen (C(w, b) = E[ (Y − Z)² ])
 
+
+4 Finding Minima Algorithms
+---------------------------
+
+* Beim *Gradientabstieg* bewegt man sich auf *Niveaumengen* (*Level sets*). Wird in „4.2.1 Level Sets“ hergeleitet. Die Folge
+
+![](./Deep_Learning/pasted_image.png)
+liegt also immer auf der zu minimierenden Funktion, weil ∇f(x^n^) = ∇f∣~x^{n~} in dem Raum definiert ist, aus dem x^n^ stammt, s. [Mathematik#Allgemeines zu Ableitungen](../Mathematik.md).
+
+* Da man sich immer auf Niveaumengen bewegt sind diese typischen Grafiken, die gezeichnet werden, je nachdem ob man eine große oder kleine Lernrate hat, auch richtig – Mir war davor immer nicht klar, warum man überhaupt wieder auf dem Graphen landen solle.
+
+
+* Feste *Learning Rate* η kann dazu führen, dass man Minimum verpasst, deswegen Selbst-Justierende verwenden, die mit kleiner werdendem Gradienten ebfalls kleiner werden, also proportional zu diesem sind.
+
+**Annahme**: ∃ δ>0: η~n~ = δ∥∇f(x^n^)∥, dann wird obige Folge zu
+![](./Deep_Learning/pasted_image001.png).
+Mit dieser Annahme konvergiert die Folge, genau dann wenn ∇f(x^n^)→0, n→∞. Wie man das δ in der Praxis findet und ob es überhaupt existiert (man geht davon aus, dass es das tut für das obige Resultat), ist eine andere Frage.
 
 B: Tensoren
 -----------

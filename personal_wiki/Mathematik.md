@@ -1,6 +1,14 @@
 # Mathematik
 Angelegt Donnerstag 31 März 2022
 
+Unterseiten
+-----------
+
+* [+3Blue1Brown](./Mathematik_files/3Blue1Brown.md)
+
+
+Gescannte Niederschriften
+-------------------------
 [./Differential und Linienintegral.pdf](./Mathematik_files/Differential und Linienintegral.pdf) 
 [./Linienintegral und Skalarfeld.pdf](./Mathematik_files/Linienintegral und Skalarfeld.pdf)
 
@@ -32,6 +40,21 @@ In der Praxis, bspw. Differentialquotient (Variable ist h **nicht** x!):
 
 
 * **Potenzreihen** sind diff'bar, wenn sie ∀ x∈(-r, r) konvergiert, dh. ∑~n∈N~ a~n~x^n^ ist endlich. Sie wird dann gliedweise (per Summenregel) differenziert, bspw. kann man so die e-Funktion ableiten
+
+
+Allgemeines zu Ableitungen
+--------------------------
+@ableitung @differenzieren @ableiten @differenzierbar
+
+* f: R^n^ → R^m^, x → f(x)
+* Df: R^n^ → R^m×n^, x → Df|~x~ = Df(x)
+	* In Df stehen die jeweiligen partiellen Ableitungen (mit Variablen)
+	* In Df(x) stehen die jeweiligen partiellen Ableitungen **ausgewertet am Punkt x**, dh. Df(x) ist eine „normale Matrix“
+	* Df(x) ist die **Linearisierung** von f an der Stelle x, dh. die lineare Abbildung, die f am Punkt x bestmöglich beschreibt
+* Df(x) = Df|~x~: R^n^ → R^m^, x' → Df(x) * x'
+	* Df(x) * x' ist ein **Matrix-Vektor-Produkt**, da in Df(x) „ganz normal“ Zahlen stehen
+* Für m = 1: ∇f(x): R^n^ → R, x' → ∇f(x) * x' = <∇f(x), x'>
+	* ∇f(x) ist (je nach Definition und Anwendung) ein Spalten- oder Zeilenvektor
 
 
 Integration
